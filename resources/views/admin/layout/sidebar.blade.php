@@ -64,7 +64,7 @@
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{ Request::is('dashboard/expenses*') ? 'display: block;' : '' }}" >
                         <li class="nav-item"><a href="{{url('dashboard/expenses')}}" class="nav-link {{ Request::is('dashboard/expenses') ? 'active' : '' }}">انواع المصروفات</a></li>
-                        <li class="nav-item"><a href="{{url('dashboard/expenses')}}" class="nav-link">انواع المصروفات</a></li>
+                        <li class="nav-item"><a href="{{url('dashboard/expenses/record')}}" class="nav-link {{ Request::is('dashboard/expenses/record') ? 'active' : '' }}">حركه المصروفات</a></li>
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">2 sidebars</a>
                             <ul class="nav nav-group-sub">

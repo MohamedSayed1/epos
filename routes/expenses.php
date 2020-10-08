@@ -14,6 +14,11 @@ Route::namespace('Expenses')->group(function () {
         Route::get('/updated', 'SplitExpensesControlles@index');
         Route::post('/updated', 'SplitExpensesControlles@updated');
 
+        Route::get('/record', 'ExpensesControllers@index');
+        Route::get('/record/del/{id?}', 'ExpensesControllers@del');
+        Route::post('/record', 'ExpensesControllers@add');
+        Route::post('/record/updated', 'ExpensesControllers@updated');
+
 
     });
 });
