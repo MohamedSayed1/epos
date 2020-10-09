@@ -23,7 +23,9 @@
             <div class="card-body">
                 <div class="media">
                     <div class="mr-3">
-                        <a href="#"><img src="{{asset('template/back/assets/global_assets/images/placeholders/placeholder.jpg')}}" width="38" height="38" class="rounded-circle" alt=" "></a>
+                        <a href="#"><img
+                                    src="{{asset('template/back/assets/global_assets/images/placeholders/placeholder.jpg')}}"
+                                    width="38" height="38" class="rounded-circle" alt=" "></a>
                     </div>
 
                     <div class="media-body">
@@ -58,18 +60,55 @@
                 </li>
 
 
-                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">المصروفات</div> <i class="icon-menu" title="Layout options"></i></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">المصروفات</div>
+                    <i class="icon-menu" title="Layout options"></i></li>
                 <li class="nav-item nav-item-submenu {{ Request::is('dashboard/expenses*') ? 'nav-item-open' : '' }}">
-                    <a href="#" class="nav-link  {{ Request::is('dashboard/expenses*') ? 'active' : '' }}"><i class="icon-copy"></i> <span>المصروفات</span></a>
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/expenses*') ? 'active' : '' }}"><i
+                                class="icon-copy"></i> <span>المصروفات</span></a>
 
-                    <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{ Request::is('dashboard/expenses*') ? 'display: block;' : '' }}" >
-                        <li class="nav-item"><a href="{{url('dashboard/expenses')}}" class="nav-link {{ Request::is('dashboard/expenses') ? 'active' : '' }}">انواع المصروفات</a></li>
-                        <li class="nav-item"><a href="{{url('dashboard/expenses/record')}}" class="nav-link {{ Request::is('dashboard/expenses/record') ? 'active' : '' }}">حركه المصروفات</a></li>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                        style="{{ Request::is('dashboard/expenses*') ? 'display: block;' : '' }}">
+                        <li class="nav-item"><a href="{{url('dashboard/expenses')}}"
+                                                class="nav-link {{ Request::is('dashboard/expenses') ? 'active' : '' }}">انواع
+                                المصروفات</a></li>
+                        <li class="nav-item"><a href="{{url('dashboard/expenses/record')}}"
+                                                class="nav-link {{ Request::is('dashboard/expenses/record') ? 'active' : '' }}">حركه
+                                المصروفات</a></li>
                         <li class="nav-item nav-item-submenu">
                             <a href="#" class="nav-link">2 sidebars</a>
                             <ul class="nav nav-group-sub">
-                                <li class="nav-item"><a href="../seed/sidebar_secondary.html" class="nav-link">Secondary sidebar</a></li>
-                                <li class="nav-item"><a href="../seed/sidebar_right.html" class="nav-link">Right sidebar</a></li>
+                                <li class="nav-item"><a href="../seed/sidebar_secondary.html" class="nav-link">Secondary
+                                        sidebar</a></li>
+                                <li class="nav-item"><a href="../seed/sidebar_right.html" class="nav-link">Right
+                                        sidebar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">المنتجات</div>
+                    <i class="icon-menu" title="Layout options"></i></li>
+                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/products*') ? 'nav-item-open' : '' }}">
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/products*') ? 'active' : '' }}"><i
+                                class="icon-copy"></i> <span>المنتجات</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                        style="{{ Request::is('dashboard/products*') ? 'display: block;' : '' }}">
+                        <li class="nav-item"><a href="{{url('dashboard/products')}}"
+                                                class="nav-link {{ Request::is('dashboard/products') ? 'active' : '' }}">
+                                المنتجات</a></li>
+                        <li class="nav-item"><a href="{{url('dashboard/expenses/record')}}"
+                                                class="nav-link {{ Request::is('dashboard/expenses/record') ? 'active' : '' }}">حركه
+                                المصروفات</a></li>
+                        <li class="nav-item nav-item-submenu">
+                            <a href="#" class="nav-link">2 sidebars</a>
+                            <ul class="nav nav-group-sub">
+                                <li class="nav-item"><a href="../seed/sidebar_secondary.html" class="nav-link">Secondary
+                                        sidebar</a></li>
+                                <li class="nav-item"><a href="../seed/sidebar_right.html" class="nav-link">Right
+                                        sidebar</a></li>
                             </ul>
                         </li>
                     </ul>

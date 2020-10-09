@@ -1,13 +1,9 @@
 <?php
 
 
-
-
-Route::namespace('Expenses')->group(function () {
-    // Controllers Within The "App\Http\Controllers\Admin\Sub" Namespace
-
-
-    Route::prefix('dashboard/expenses')->group(function () {
+Route::prefix('dashboard/expenses')->group(function () {
+    Route::namespace('Expenses')->group(function () {
+        // Controllers Within The "App\Http\Controllers\Expenses" Namespace
 
         Route::get('/', 'SplitExpensesControlles@index');
         Route::post('/', 'SplitExpensesControlles@add');
