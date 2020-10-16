@@ -22,18 +22,17 @@ class ProductServices extends Services
     {
         // rules to valid nullable
         $rules = [
-            'name'          =>'required|max:249|unique:product,name',
-            'count'         =>'required|integer',
-            'pruch_prices'  =>'required|numeric',
-            'prices'        =>'required|numeric',
-            'photo'         =>'nullable|image',
+            'name' => 'required|max:249|unique:product,name',
+            'count' => 'required|integer',
+            'pruch_prices' => 'required|numeric',
+            'prices' => 'required|numeric',
+            'photo' => 'nullable|image',
         ];
 
         // vaild
-        $validator = Validator::make($request,$rules);
+        $validator = Validator::make($request, $rules);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             // set erros
             //  return   $validator->errors();
             $this->setError($validator->errors());
@@ -43,8 +42,6 @@ class ProductServices extends Services
 
         if (!empty($request['photo'])) {
 
-
-
             $newImage = 'product_' . md5(time()) . '.' . $request['photo']->getClientOriginalExtension();
 
             $request['photo']->move(public_path() . '/upload/', $newImage);
@@ -52,8 +49,7 @@ class ProductServices extends Services
         }
 
 
-        if($this->productRepo->add($request))
-        {
+        if ($this->productRepo->add($request)) {
             return true;
         }
 
@@ -62,24 +58,22 @@ class ProductServices extends Services
     }
 
 
-
     public function updated($data)
     {
         // rules to valid
         $rules = [
-
-            'name'          =>'required|max:249|unique:product,name,'. $data['id'].',product_id',
-            'count'         =>'required|integer',
-            'pruch_prices'  =>'required|numeric',
-            'prices'        =>'required|numeric',
-            'photo'         =>'nullable|image|mimes:jpeg,jpg,png,svg,webp,tif,tiff',
+            'id' => 'required',
+            'name' => 'required|max:249|unique:product,name,' . $data['id'] . ',product_id',
+            'count' => 'required|integer',
+            'pruch_prices' => 'required|numeric',
+            'prices' => 'required|numeric',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,svg,webp,tif,tiff',
         ];
 
         // vaild
-        $validator = Validator::make($data,$rules);
+        $validator = Validator::make($data, $rules);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             // set erros
             //  return   $validator->errors();
             $this->setError($validator->errors());
@@ -87,8 +81,22 @@ class ProductServices extends Services
         }
 
 
-        if($this->productRepo->add($data))
-        {
+        if (!empty($data['photo'])) {
+
+            $newImage = 'product_' . md5(time()) . '.' . $data['photo']->getClientOriginalExtension();
+
+            $data['photo']->move(public_path() . '/upload/', $newImage);
+            $data['photo'] = $newImage;
+
+            /* del old photos
+             *   $image_path = "/images/filename.ext";  // Value is not URL but directory file path
+                    if(File::exists($image_path)) {
+                 File::delete($image_path);
+                    }
+             */
+        }
+
+        if ($this->productRepo->add($data)) {
             return true;
         }
 
@@ -103,9 +111,9 @@ class ProductServices extends Services
 
     public function getById($id)
     {
-        $prod =  $this->productRepo->product($id);
+        $prod = $this->productRepo->product($id);
 
-        if(!empty($prod))
+        if (!empty($prod))
             return $prod;
 
 

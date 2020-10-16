@@ -11,6 +11,9 @@ Route::prefix('dashboard/products')->group(function () {
         Route::get('/', 'ProductsController@index');
         Route::post('/', 'ProductsController@add');
 
+        Route::get('/get/{id?}', 'ProductsController@updatedView');
+        Route::post('/get', 'ProductsController@updatedProces');
+
 
 
     });

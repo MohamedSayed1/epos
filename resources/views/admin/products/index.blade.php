@@ -74,7 +74,9 @@
                                 class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
                                         class="icon-checkmark2"></i></b>حفظ
                         </button>
-                        <button type="button" class="btn btn-link" data-dismiss="modal">اغلاق</button>
+                        <div id="back_button">
+                        <button type="button"  class="btn btn-link" data-dismiss="modal">اغلاق</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -85,27 +87,91 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">تعديل</h5>
+                    <h5 class="modal-title"> تعديل  <b id="updated_title"></b> </h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <form action="{{url('dashboard/expenses/updated')}}" method="post">
-                    <div class="modal-body">
-                        <div class="col-md-12">
-                            <label>الاسم</label>
-                            <input type="text" name="name" id="name_updated" class="form-control"
-                                   value="{{old('name')}}">
-                            @if ($errors->has('name'))
-                                <span class="help-block">
-                                     <strong class="text-danger">{{$errors->first('name')}}</strong>
-                                </span>
-                            @endif
+                <form id="updatedForm" method="post" action="#" enctype="multipart/form-data">
+                    <div class="modal-body moadel_updated">
+                        <div class="text-center">
+                            <div class="card-img-actions d-inline-block mb-3">
+                                <img class="rounded-circle" id="iamge_updated_show" src="" width="160" height="160" alt="">
+                                <div class="card-img-actions-overlay card-img rounded-circle">
+                                    <a id="iamge_updated_url" target="_blank" href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round legitRipple">
+                                        <i class="icon-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-md-12">
+                            <label><span class="text-danger">*</span>الاسم</label>
+                            <input type="text" name="name" id="name_updated" class="form-control" value=""
+                                   required>
+                            <span class="help-block">
+                                     <strong class="name-updated-error text-danger"></strong>
+                                </span>
+
+                        </div>
+                        <div class="col-md-12">
+                            <label>البركود</label>
+                            <input type="text" name="parcod" id="parcod_updated" class="form-control" value="">
+                            <span class="help-block">
+                                     <strong class="parcod-updated-error text-danger"></strong>
+                                </span>
+
+                        </div>
+                        <div class="col-md-12">
+                            <label><span class="text-danger">*</span>العدد</label>
+                            <input type="number" min="0" id="count_updated" step='any' name="count" class="form-control"
+                                   value="{{old('count')}}" required>
+                            <span class="help-block">
+                                     <strong class="count-updated-error text-danger"></strong>
+                                </span>
+
+                        </div>
+                        <div class="col-md-12">
+                            <label><span class="text-danger">*</span>سعر التكلفة </label>
+                            <input type="number" min="0" step='any' id="pruch_prices_updated" name="pruch_prices"
+                                   class="form-control"
+                                   value="" required>
+                                <span class="help-block">
+                                     <strong class="pruch_prices-updated-error text-danger"></strong>
+                                </span>
+                        </div>
+                        <div class="col-md-12">
+                            <label><span class="text-danger">*</span>سعر البيع</label>
+                            <input type="number" min="0" step='any' id="prices_updated" name="prices" class="form-control"
+                                   value="{{old('prices')}}" required>
+                            <span class="help-block">
+                                     <strong class="prices-updated-error text-danger"></strong>
+                                </span>
+                        </div>
+                        <div class="col-md-12">
+                            <label><span class="text-danger">*</span>خصم</label>
+                            <input type="number" min="0" step='any' id="discount_updated" name="discount" class="form-control"
+                                   value="" required>
+                            <span class="help-block">
+                                 <strong class="prices-updated-error text-danger"></strong>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>الصوره</label>
+                            <input type="file" name="photo" id="photo_updated" class="form-input-styled" data-fouc>
+                            <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
+                            <span class="help-block">
+                                     <strong class="photo-updated-error text-danger"></strong>
+                                </span>
+
+                        </div>
+
+
+
+
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input id="id" type="hidden" name="id" value="">
                     </div>
 
                     <div class="modal-footer ">
-                        <button type="submit" class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
+                        <button type="submit" id="updatedSubmit" class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
                                         class="icon-checkmark2"></i></b>حفظ
                         </button>
                         <button type="button" class="btn btn-link" data-dismiss="modal">اغلاق</button>
@@ -196,9 +262,7 @@
                                                            data-placement="bottom" title=""
                                                            data-original-title="تعديل "
                                                            onclick="updated({{$pro->product_id}})"
-                                                           data-name="{{ $pro->name }}"
-                                                        > <i
-                                                                    class="icon-pencil7"></i> تعديل
+                                                        > <i class="icon-pencil7"></i> تعديل
                                                         </a>
                                                     </div>
                                                 </div>
@@ -252,7 +316,73 @@
             $('#name_updated').val(name);
             $('#id').val(id);
             $('#modal_default_2').modal('show');
+
+            $.ajax({
+                url: '{{url("/dashboard/products/get")}}/'+id,
+                method: 'get',
+                beforeSend: function () {
+                    document.getElementById("updated_Submit").disabled = true;
+                    var block = $('.moadel_updated');
+                    $(block).block({
+                        message: '<span class="font-weight-semibold float-left left">..برجاء الانتظار</span>',
+                        overlayCSS: {
+                            backgroundColor: '#1b2024',
+                            opacity: 0.8,
+                            zIndex: 1200,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            color: '#fff',
+                            padding: 10,
+                            zIndex: 1201,
+                            backgroundColor: 'transparent'
+                        },
+                    });
+                    $('.photo-error').html('');
+                    $('.name-error').html('');
+                    $('.parcod-error').html('');
+                    $('.count-error').html('');
+                    $('.pruch_prices-error').html('');
+                    $('.prices-error').html('');
+                },
+                success: function (data) {
+                    var block = $('.moadel_updated');
+                    $(block).unblock();
+                    document.getElementById("updated_Submit").disabled = false;
+                    if (data.status == 200){
+                        console.log(data.data);
+                        $('#updated_title').html(data.data.name);
+                        $('#name_updated').val(data.data.name);
+                        $('#parcod_updated').val(data.data.parcod);
+                        $('#count_updated').val(data.data.count);
+                        $('#pruch_prices_updated').val(data.data.pruch_prices);
+                        $('#prices_updated').val(data.data.prices);
+                        $('#discount_updated').val(data.data.discount);
+                        $('#id').val(data.data.product_id);
+                        var url = "{{url('/upload/')}}"+'/'+data.data.photo;
+                        console.log(url);
+                        $('#iamge_updated_show').attr("src",url);
+                        $('#iamge_updated_url').attr("href",url);
+
+                    }
+                     else {
+                        console.log(data);
+                      alert('برجاء التاكد من وجود هذا المنتج');
+                        $('#modal_default_2').modal('hide');
+                    }
+
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                    var block = $('.modael_here');
+                    $(block).unblock();
+                    document.getElementById("addSubmit").disabled = false;
+
+                }
+            });
         }
+
 
         $('.form-input-styled').uniform({
             fileButtonClass: 'action btn bg-pink-400'
@@ -349,6 +479,10 @@
                                     $('.count-error').html('');
                                     $('.pruch_prices-error').html('');
                                     $('.prices-error').html('');
+                                    $('#back_button').empty();
+                                    $('#back_button').append(
+                                        '<button type="button" onclick="window.location.reload();" class="btn btn-link" data-dismiss="modal">اغلاق</button>'
+                                    );
                                 }
                             })
                         } else {
@@ -369,19 +503,96 @@
 
 
             });
+
+            $('#updatedSubmit').click(function () {
+                if($('#photo_updated')[0].files.length != 0)
+                {
+                    var photo = $('#photo_updated')[0].files[0];
+
+                }else
+                var name = $('#name_updated').val();
+                var parcod = $('#parcod_updated').val();
+                var count = $('#count_updated').val();
+                var pruch_prices = $('#pruch_prices_updated').val();
+                var prices = $('#prices_updated').val();
+                var discount = $('#discount_updated_updated').val();
+                var id = $('#id').val();
+
+                var formData = new FormData();
+                formData.append("_token", '{!! csrf_token() !!}');
+                formData.append("name", name);
+                formData.append("parcod", parcod);
+                formData.append("count", count);
+                formData.append("pruch_prices", pruch_prices);
+                formData.append("prices", prices);
+                formData.append("id", id);
+                formData.append("discount", discount);
+                if($('#photo_updated')[0].files.length != 0)
+                {
+                    formData.append("photo", photo);
+                }
+
+
+
+                $.ajax({
+                    url: '{{url("/dashboard/products/get")}}',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                        document.getElementById("updatedSubmit").disabled = true;
+                        var block = $('.moadel_updated');
+                        $(block).block({
+                            message: '<span class="font-weight-semibold float-left left">..برجاء الانتظار</span>',
+                            overlayCSS: {
+                                backgroundColor: '#1b2024',
+                                opacity: 0.8,
+                                zIndex: 1200,
+                                cursor: 'wait'
+                            },
+                            css: {
+                                border: 0,
+                                color: '#fff',
+                                padding: 10,
+                                zIndex: 1201,
+                                backgroundColor: 'transparent'
+                            },
+                        });
+                        $('.photo-updated-error').html('');
+                        $('.name-updated-error').html('');
+                        $('.parcod-updated-error').html('');
+                        $('.count-updated-error').html('');
+                        $('.pruch_prices-updated-error').html('');
+                        $('.prices-updated-error').html('');
+                        $('.discount-updated-error').html('');
+                    },
+                    success: function (data) {
+                        var block = $('.moadel_updated');
+                        $(block).unblock();
+                        document.getElementById("updatedSubmit").disabled = false;
+                        if (data.status == 200) {
+                            location.reload();
+                        }
+                        else {
+                            $.each(data.data, function (key, value) {
+                                $('.' + key + '-error').html(value);
+                            });
+                        }
+
+                    },
+                    error: function (data) {
+                        alert('برجاء المحاوله مره اخري .. ');
+                        var block = $('.modael_here');
+                        $(block).unblock();
+                        document.getElementById("updatedSubmit").disabled = false;
+
+                    }
+                });
+
+
+            });
         });
     </script>
-    @if(!empty(Session::get('error_code')) && Session::get('error_code') == 1)
-        <script>
-            $(function () {
-                $('#modal_default').modal('show');
-            });
-        </script>
-    @elseif(!empty(Session::get('error_code')) && Session::get('error_code') == 2)
-        <script>
-            $(function () {
-                $('#modal_default_2').modal('show');
-            });
-        </script>
-    @endif
+
 @endsection

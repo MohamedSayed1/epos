@@ -38,4 +38,21 @@ Class ProductsController extends Controller
         return response()->json(['status'=> 201,'data'=> $errors ]) ;
     }
 
+    public function updatedView($id=0)
+    {
+        if($product =$this->ProdcutServ->getById($id))
+           return response()->json(['status'=> 200,'data'=> $product ]) ;
+
+
+         return response()->json(['status'=> 201]) ;
+    }
+
+    public function updatedProces(Request $request)
+    {
+        if($this->ProdcutServ->updated($request->all()))
+        {
+
+        }
+    }
+
 }
