@@ -7,6 +7,7 @@ namespace App\Pos\Services\Products;
 use App\Pos\Repository\Products\ProductsRepo;
 use App\Pos\Services;
 use Validator;
+use Illuminate\Http\Request;
 
 class ProductServices extends Services
 {
@@ -17,9 +18,9 @@ class ProductServices extends Services
         $this->productRepo = new ProductsRepo();
     }
 
-    public function add($data)
+    public function add($request)
     {
-        // rules to valid
+        // rules to valid nullable
         $rules = [
             'name'          =>'required|max:249|unique:product,name',
             'count'         =>'required|integer',
@@ -29,7 +30,7 @@ class ProductServices extends Services
         ];
 
         // vaild
-        $validator = Validator::make($data,$rules);
+        $validator = Validator::make($request,$rules);
 
         if($validator->fails())
         {
@@ -40,7 +41,18 @@ class ProductServices extends Services
         }
 
 
-        if($this->productRepo->add($data))
+        if (!empty($request['photo'])) {
+
+
+
+            $newImage = 'product_' . md5(time()) . '.' . $request['photo']->getClientOriginalExtension();
+
+            $request['photo']->move(public_path() . '/upload/', $newImage);
+            $request['photo'] = $newImage;
+        }
+
+
+        if($this->productRepo->add($request))
         {
             return true;
         }
@@ -60,7 +72,7 @@ class ProductServices extends Services
             'count'         =>'required|integer',
             'pruch_prices'  =>'required|numeric',
             'prices'        =>'required|numeric',
-            'photo'         =>'nullable|image',
+            'photo'         =>'nullable|image|mimes:jpeg,jpg,png,svg,webp,tif,tiff',
         ];
 
         // vaild

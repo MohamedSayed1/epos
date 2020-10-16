@@ -22,8 +22,8 @@ class ProductsRepo
         $this->product->count        = $data['count'];
         $this->product->pruch_prices = $data['pruch_prices'];
         $this->product->prices       = $data['prices'];
-        $this->product->photo        = $data['photo'];
-        $this->product->discount     = $data['discount'];
+        $this->product->photo        = isset($data['photo'])?$data['photo']:null;
+        $this->product->discount       = isset($data['discount'])?$data['discount']:null;
 
         return  $this->product->save();
     }

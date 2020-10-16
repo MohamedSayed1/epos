@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>@yield('title')</title>
 
     <!-- Global stylesheets -->
@@ -14,6 +15,7 @@
     <link href="{{asset('template/back/assets/assets/css/layout.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('template/back/assets/assets/css/components.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('template/back/assets/assets/css/colors.min.css')}}" rel="stylesheet" type="text/css">
+
     <!-- /global stylesheets -->
     @yield('css')
 
@@ -361,6 +363,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/locales/ar.min.js"></script>
 <script src="{{ asset('template/back/assets/global_assets/js/plugins/notifications/bootbox.min.js')}}"></script>
 <script src="{{ asset('template/back/assets/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha512-YUkaLm+KJ5lQXDBdqBqk7EVhJAdxRnVdT2vtCzwPHSweCzyMgYV/tgGF4/dCyqtCC2eCphz0lRQgatGVdfR0ww==" crossorigin="anonymous"></script>
+
 <script>
     $('.tasks-list').DataTable({
         autoWidth: false,
