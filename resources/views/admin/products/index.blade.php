@@ -75,7 +75,7 @@
                                         class="icon-checkmark2"></i></b>حفظ
                         </button>
                         <div id="back_button">
-                        <button type="button"  class="btn btn-link" data-dismiss="modal">اغلاق</button>
+                            <button type="button" class="btn btn-link" data-dismiss="modal">اغلاق</button>
                         </div>
                     </div>
                 </form>
@@ -87,16 +87,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title"> تعديل  <b id="updated_title"></b> </h5>
+                    <h5 class="modal-title"> تعديل <b id="updated_title"></b></h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <form id="updatedForm" method="post" action="#" enctype="multipart/form-data">
                     <div class="modal-body moadel_updated">
                         <div class="text-center">
                             <div class="card-img-actions d-inline-block mb-3">
-                                <img class="rounded-circle" id="iamge_updated_show" src="" width="160" height="160" alt="">
+                                <img class="rounded-circle" id="iamge_updated_show" src="" width="160" height="160"
+                                     alt="">
                                 <div class="card-img-actions-overlay card-img rounded-circle">
-                                    <a id="iamge_updated_url" target="_blank" href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round legitRipple">
+                                    <a id="iamge_updated_url" target="_blank" href="#"
+                                       class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round legitRipple">
                                         <i class="icon-eye"></i>
                                     </a>
                                 </div>
@@ -133,13 +135,14 @@
                             <input type="number" min="0" step='any' id="pruch_prices_updated" name="pruch_prices"
                                    class="form-control"
                                    value="" required>
-                                <span class="help-block">
+                            <span class="help-block">
                                      <strong class="pruch_prices-updated-error text-danger"></strong>
                                 </span>
                         </div>
                         <div class="col-md-12">
                             <label><span class="text-danger">*</span>سعر البيع</label>
-                            <input type="number" min="0" step='any' id="prices_updated" name="prices" class="form-control"
+                            <input type="number" min="0" step='any' id="prices_updated" name="prices"
+                                   class="form-control"
                                    value="{{old('prices')}}" required>
                             <span class="help-block">
                                      <strong class="prices-updated-error text-danger"></strong>
@@ -147,7 +150,8 @@
                         </div>
                         <div class="col-md-12">
                             <label><span class="text-danger">*</span>خصم</label>
-                            <input type="number" min="0" step='any' id="discount_updated" name="discount" class="form-control"
+                            <input type="number" min="0" step='any' id="discount_updated" name="discount"
+                                   class="form-control"
                                    value="" required>
                             <span class="help-block">
                                  <strong class="prices-updated-error text-danger"></strong>
@@ -164,14 +168,13 @@
                         </div>
 
 
-
-
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input id="id" type="hidden" name="id" value="">
                     </div>
 
                     <div class="modal-footer ">
-                        <button type="submit" id="updatedSubmit" class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
+                        <button type="submit" id="updatedSubmit"
+                                class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
                                         class="icon-checkmark2"></i></b>حفظ
                         </button>
                         <button type="button" class="btn btn-link" data-dismiss="modal">اغلاق</button>
@@ -241,13 +244,14 @@
                                         <td>{{ $pro->prices }}</td>
                                         <td>
                                             @if(!empty($pro->photo) && file_exists(public_path().'/upload/'.$pro->photo))
-                                            <div class="mr-md-3 mb-2 mb-md-0">
-                                                <a target="_blank" href="{{url('upload/'.$pro->photo)}}">
-                                                    <img src="{{url('upload/'.$pro->photo)}}" class="rounded-circle" width="42" height="42" alt="">
-                                                </a>
-                                            </div>
-                                                @endif
-                                           </td>
+                                                <div class="mr-md-3 mb-2 mb-md-0">
+                                                    <a target="_blank" href="{{url('upload/'.$pro->photo)}}">
+                                                        <img src="{{url('upload/'.$pro->photo)}}" class="rounded-circle"
+                                                             width="42" height="42" alt="">
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        </td>
                                         <td>{{ $pro->discount }}</td>
                                         <td>
                                             <div class="list-icons">
@@ -318,10 +322,10 @@
             $('#modal_default_2').modal('show');
 
             $.ajax({
-                url: '{{url("/dashboard/products/get")}}/'+id,
+                url: '{{url("/dashboard/products/get")}}/' + id,
                 method: 'get',
                 beforeSend: function () {
-                    document.getElementById("updated_Submit").disabled = true;
+                    document.getElementById("updatedSubmit").disabled = true;
                     var block = $('.moadel_updated');
                     $(block).block({
                         message: '<span class="font-weight-semibold float-left left">..برجاء الانتظار</span>',
@@ -349,8 +353,8 @@
                 success: function (data) {
                     var block = $('.moadel_updated');
                     $(block).unblock();
-                    document.getElementById("updated_Submit").disabled = false;
-                    if (data.status == 200){
+                    document.getElementById("updatedSubmit").disabled = false;
+                    if (data.status == 200) {
                         console.log(data.data);
                         $('#updated_title').html(data.data.name);
                         $('#name_updated').val(data.data.name);
@@ -360,15 +364,23 @@
                         $('#prices_updated').val(data.data.prices);
                         $('#discount_updated').val(data.data.discount);
                         $('#id').val(data.data.product_id);
-                        var url = "{{url('/upload/')}}"+'/'+data.data.photo;
-                        console.log(url);
-                        $('#iamge_updated_show').attr("src",url);
-                        $('#iamge_updated_url').attr("href",url);
+                        if (data.data.photo !== null) {
 
-                    }
-                     else {
+                            var url = "{{url('/upload/')}}" + '/' + data.data.photo;
+                            console.log(url);
+                            $('#iamge_updated_show').attr("src", url);
+                            $('#iamge_updated_url').attr("href", url);
+                        } else {
+
+                            var defu = '{{asset("/template/back/assets/global_assets/images/no-image.png")}}';
+                            $('#iamge_updated_show').attr("src", defu);
+                            $('#iamge_updated_url').attr("href", defu);
+                        }
+
+
+                    } else {
                         console.log(data);
-                      alert('برجاء التاكد من وجود هذا المنتج');
+                        alert('برجاء التاكد من وجود هذا المنتج');
                         $('#modal_default_2').modal('hide');
                     }
 
@@ -391,11 +403,12 @@
 
         $(document).ready(function () {
             $('#addSubmit').click(function () {
-                if($('#photo')[0].files.length != 0)
-                {
+                if ($('#photo')[0].files.length != 0) {
                     var photo = $('#photo')[0].files[0];
 
-                }else
+                }
+
+
                 var name = $('#name').val();
                 var parcod = $('#parcod').val();
                 var count = $('#count').val();
@@ -409,11 +422,9 @@
                 formItem.append("count", count);
                 formItem.append("pruch_prices", pruch_prices);
                 formItem.append("prices", prices);
-                if($('#photo')[0].files.length != 0)
-                {
+                if ($('#photo')[0].files.length != 0) {
                     formItem.append("photo", photo);
                 }
-
 
 
                 $.ajax({
@@ -505,33 +516,33 @@
             });
 
             $('#updatedSubmit').click(function () {
-                if($('#photo_updated')[0].files.length != 0)
-                {
-                    var photo = $('#photo_updated')[0].files[0];
+                alert('here updated')
+                if ($('#photo_updated')[0].files.length != 0) {
+                    var photo_updated = $('#photo_updated')[0].files[0];
 
-                }else
-                var name = $('#name_updated').val();
-                var parcod = $('#parcod_updated').val();
-                var count = $('#count_updated').val();
-                var pruch_prices = $('#pruch_prices_updated').val();
-                var prices = $('#prices_updated').val();
-                var discount = $('#discount_updated_updated').val();
+                }
+
+                var name_updated = $('#name_updated').val();
+                var parcod_updated = $('#parcod_updated').val();
+                var count_updated = $('#count_updated').val();
+                var pruch_prices_updated = $('#pruch_prices_updated').val();
+                var prices_updated = $('#prices_updated').val();
+                var discount_updated = $('#discount_updated').val();
                 var id = $('#id').val();
 
                 var formData = new FormData();
+                alert(name_updated);
                 formData.append("_token", '{!! csrf_token() !!}');
-                formData.append("name", name);
-                formData.append("parcod", parcod);
-                formData.append("count", count);
-                formData.append("pruch_prices", pruch_prices);
-                formData.append("prices", prices);
+                formData.append("name", name_updated);
+                formData.append("parcod", parcod_updated);
+                formData.append("count", count_updated);
+                formData.append("pruch_prices", pruch_prices_updated);
+                formData.append("prices", prices_updated);
                 formData.append("id", id);
-                formData.append("discount", discount);
-                if($('#photo_updated')[0].files.length != 0)
-                {
-                    formData.append("photo", photo);
+                formData.append("discount", discount_updated);
+                if ($('#photo_updated')[0].files.length != 0) {
+                    formData.append("photo", photo_updated);
                 }
-
 
 
                 $.ajax({
@@ -572,18 +583,22 @@
                         $(block).unblock();
                         document.getElementById("updatedSubmit").disabled = false;
                         if (data.status == 200) {
+                                Swal.fire(
+                                    'احسنت',
+                                    'تم التعديل بنجاح',
+                                    'success'
+                                );
                             location.reload();
-                        }
-                        else {
+                        } else {
                             $.each(data.data, function (key, value) {
-                                $('.' + key + '-error').html(value);
+                                $('.' + key + '-updated-error').html(value);
                             });
                         }
 
                     },
                     error: function (data) {
                         alert('برجاء المحاوله مره اخري .. ');
-                        var block = $('.modael_here');
+                        var block = $('.moadel_updated');
                         $(block).unblock();
                         document.getElementById("updatedSubmit").disabled = false;
 

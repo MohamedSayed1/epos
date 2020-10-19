@@ -62,12 +62,12 @@ class ProductServices extends Services
     {
         // rules to valid
         $rules = [
-            'id' => 'required',
-            'name' => 'required|max:249|unique:product,name,' . $data['id'] . ',product_id',
-            'count' => 'required|integer',
-            'pruch_prices' => 'required|numeric',
-            'prices' => 'required|numeric',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,svg,webp,tif,tiff',
+            'id'            => 'required',
+            'name'          => 'required|max:249|unique:product,name,' .$data['id'].',product_id',
+            'count'         => 'required|integer',
+            'pruch_prices'  => 'required|numeric',
+            'prices'        => 'required|numeric',
+            'photo'         => 'nullable|image|mimes:jpeg,jpg,png,svg,webp,tif,tiff',
         ];
 
         // vaild
@@ -82,21 +82,12 @@ class ProductServices extends Services
 
 
         if (!empty($data['photo'])) {
-
             $newImage = 'product_' . md5(time()) . '.' . $data['photo']->getClientOriginalExtension();
-
             $data['photo']->move(public_path() . '/upload/', $newImage);
             $data['photo'] = $newImage;
-
-            /* del old photos
-             *   $image_path = "/images/filename.ext";  // Value is not URL but directory file path
-                    if(File::exists($image_path)) {
-                 File::delete($image_path);
-                    }
-             */
         }
 
-        if ($this->productRepo->add($data)) {
+        if ($this->productRepo->updated($data)) {
             return true;
         }
 

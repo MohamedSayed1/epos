@@ -114,6 +114,26 @@
                     </ul>
                 </li>
 
+                <!--  users    -->
+
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">المستخدمين</div>
+                    <i class="icon-menu" title="Layout options"></i></li>
+                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/users*') ? 'nav-item-open' : '' }}">
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/users*') ? 'active' : '' }}"><i
+                                class="icon-copy"></i> <span>المستخدمين</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                        style="{{ Request::is('dashboard/users*') ? 'display: block;' : '' }}">
+                        <li class="nav-item"><a href="{{url('dashboard/users')}}"
+                                                class="nav-link {{ Request::is('dashboard/users') ? 'active' : '' }}">
+                                المستخدمين</a></li>
+
+
+                    </ul>
+                </li>
+
+
 
             </ul>
         </div>

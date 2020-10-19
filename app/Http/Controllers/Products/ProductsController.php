@@ -49,10 +49,13 @@ Class ProductsController extends Controller
 
     public function updatedProces(Request $request)
     {
-        if($this->ProdcutServ->updated($request->all()))
-        {
 
-        }
+        if($this->ProdcutServ->updated($request->all()))
+            return response()->json(['status'=> 200]) ;
+
+
+        $errors =  $this->ProdcutServ->errors();
+        return response()->json(['status'=> 201,'data'=> $errors ]) ;
     }
 
 }
