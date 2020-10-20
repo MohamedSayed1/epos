@@ -17,7 +17,7 @@ class CreateExpensesTable extends Migration
             $table->integer('ex_id', true);
             $table->integer('split_id')->nullable()->index('splitExpenses');
             $table->text('desc')->nullable();
-            $table->float('prices', 10, 0)->nullable();
+            $table->double('prices')->nullable();
             $table->timestamps();
         });
     }
