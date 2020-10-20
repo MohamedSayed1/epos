@@ -19,4 +19,20 @@ class UsersRepo
         return $this->user->get();
     }
 
+    public function updated($data)
+    {
+        $user = $this->user->find($data['id']);
+        $user->name = $data['name'];
+        $user->username = $data['username'];
+        return $user->save();
+    }
+
+    public function updatedPassword($data)
+    {
+        $user = $this->user->find($data['id']);
+        $user->password = bcrypt($data['password']);
+
+        return $user->save();
+    }
+
 }

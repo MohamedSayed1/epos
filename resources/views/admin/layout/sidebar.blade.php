@@ -65,7 +65,7 @@
                     <i class="icon-menu" title="Layout options"></i></li>
                 <li class="nav-item nav-item-submenu {{ Request::is('dashboard/expenses*') ? 'nav-item-open' : '' }}">
                     <a href="#" class="nav-link  {{ Request::is('dashboard/expenses*') ? 'active' : '' }}"><i
-                                class="icon-copy"></i> <span>المصروفات</span></a>
+                                class="icon-cash3"></i> <span>المصروفات</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts"
                         style="{{ Request::is('dashboard/expenses*') ? 'display: block;' : '' }}">
@@ -92,7 +92,7 @@
                     <i class="icon-menu" title="Layout options"></i></li>
                 <li class="nav-item nav-item-submenu {{ Request::is('dashboard/products*') ? 'nav-item-open' : '' }}">
                     <a href="#" class="nav-link  {{ Request::is('dashboard/products*') ? 'active' : '' }}"><i
-                                class="icon-copy"></i> <span>المنتجات</span></a>
+                                class="icon-cart5"></i> <span>المنتجات</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts"
                         style="{{ Request::is('dashboard/products*') ? 'display: block;' : '' }}">
@@ -121,7 +121,7 @@
                     <i class="icon-menu" title="Layout options"></i></li>
                 <li class="nav-item nav-item-submenu {{ Request::is('dashboard/users*') ? 'nav-item-open' : '' }}">
                     <a href="#" class="nav-link  {{ Request::is('dashboard/users*') ? 'active' : '' }}"><i
-                                class="icon-copy"></i> <span>المستخدمين</span></a>
+                                class="icon-man"></i> <span>المستخدمين</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts"
                         style="{{ Request::is('dashboard/users*') ? 'display: block;' : '' }}">

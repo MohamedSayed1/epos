@@ -22,3 +22,14 @@ Route::get('/test', 'test@index');
 Route::get('/test', 'test@index');
 
 
+Route::prefix('dashboard/users')->group(function () {
+    Route::namespace('Users')->group(function () {
+        // Controllers Within The "App\Http\Controllers\Expenses" Namespace
+
+        Route::get('/', 'UsersControllers@index');
+        Route::post('/', 'UsersControllers@updated');
+        Route::post('/password', 'UsersControllers@updatedPassword');
+
+
+    });
+});
