@@ -24,19 +24,20 @@
                 <div class="media">
                     <div class="mr-3">
                         <a href="#"><img
-                                    src="{{asset('template/back/assets/global_assets/images/placeholders/placeholder.jpg')}}"
+                                    src="{{asset('template/back/assets/global_assets/images/user-place.png')}}"
                                     width="38" height="38" class="rounded-circle" alt=" "></a>
                     </div>
 
-                    <div class="media-body">
-                        <div class="media-title font-weight-semibold">Victoria Baker</div>
-                        <div class="font-size-xs opacity-50">
-                            <i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA
+                    <div class="media-body center">
+                        <div class="media-title font-weight-semibold">{{Auth()->user()->name}}</div>
+                        <div class="font-size-base opacity-50">
+                            <div id="curTime"></div>
                         </div>
+
                     </div>
 
                     <div class="ml-3 align-self-center">
-                        <a href="#" class="text-white"><i class="icon-cog3"></i></a>
+                        <a href="{{url('/logout')}}" class="text-white"><i class="icon-switch2" title="تسجيل الخروج"></i></a>
                     </div>
                 </div>
             </div>
@@ -50,7 +51,7 @@
 
                 <!-- Main -->
                 <li class="nav-item">
-                    <a href="{{url('/')}}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
+                    <a href="{{url('/dashboard')}}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
                         <i class="icon-home4"></i>
                         <span>
 							 الرئيسيه

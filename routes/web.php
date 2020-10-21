@@ -12,11 +12,24 @@
 */
 
 Route::get('/', function () {
+
+    if(\Auth::check())
+    {
+        return redirect()->back();
+    }
+    return view('login');
+});
+Route::get('/dashboard', function () {
    // \Helmesvs\Notify\Facades\Notify::success('تم الاضافه بنجاح', 'احسنت');
     return view('admin.layout.admin');
 });
 
+Route::post('/login', 'LoginController@login');
+Route::get('/logout', 'LoginController@logout');
+
+
 Route::get('/test', 'test@index');
+
 
 
 Route::get('/test', 'test@index');
