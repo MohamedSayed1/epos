@@ -115,6 +115,28 @@
                     </ul>
                 </li>
 
+                <!--  Session      -->
+
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">الجلسات</div>
+                    <i class="icon-menu" title="Layout options"></i></li>
+                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/session*') ? 'nav-item-open' : '' }}">
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/session*') ? 'active' : '' }}"><i
+                                class="icon-display4"></i> <span>الجلسات</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                        style="{{ Request::is('dashboard/session*') ? 'display: block;' : '' }}">
+                        <li class="nav-item"><a href="{{url('dashboard/session')}}"
+                                                class="nav-link {{ Request::is('dashboard/session') ? 'active' : '' }}">
+                                الجلسات</a></li>
+
+
+                    </ul>
+                </li>
+
+
+
+
                 <!--  users    -->
 
                 <li class="nav-item-header">

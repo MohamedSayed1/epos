@@ -64,4 +64,9 @@ class ProductsRepo
     {
         \File::delete('upload' . '/' . $path);
     }
+
+    public function getPage($serach = null)
+    {
+        return $this->product->where('name','like','%'.$serach.'%')->orwhere('parcod',$serach)->paginate(12);
+    }
 }

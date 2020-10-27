@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use App\Pos\Repository\Products\ProductsRepo;
 use App\User;
 use Illuminate\Support\Facades\File;
 
@@ -13,13 +14,9 @@ class test extends Controller
     public function index()
     {
 
-        $user = new User();
+        $x = new ProductsRepo();
 
-        $user->username = "user";
-        $user->password = 123456;
-        $user->name = 'user';
-        $user->save();
-
+        return $x->getPage();
 
     }
 }

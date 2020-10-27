@@ -6,7 +6,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">اضافه منتج جديد</h5>
+                    <h5 class="modal-title">فتح الجلسه</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <form id="addForm" method="post" action="#" enctype="multipart/form-data">
@@ -223,36 +223,27 @@
                         <table id="xtreme-table55" class="tasks-list table expensessetupPage">
                             <thead>
                             <tr>
-                                <th>الاسم</th>
-                                <th>البركود</th>
-                                <th>العدد</th>
-                                <th>سعر الشراء</th>
-                                <th>سعر البيع</th>
-                                <th>صوره المنتج</th>
-                                <th>الخصم</th>
+                                <th>رقم الجلسه</th>
+                                <th>فتحت بواسطه</th>
+                                <th>تاريخ الفتح</th>
+                                <th>رصيد الافتتاحي</th>
+                                <th>اغلاق بواسطه</th>
+                                <th>مبلغ الغلق</th>
+                                <th>وقت الغلق</th>
                                 <th>الاعدادات</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if(isset($products))
-                                @foreach($products as $pro)
+                            @if(isset($session))
+                                @foreach($session as $sess)
                                     <tr>
-                                        <td>{{ $pro->name }}</td>
-                                        <td>{{ $pro->parcod }}</td>
-                                        <td>{{ $pro->count }}</td>
-                                        <td>{{ $pro->pruch_prices }}</td>
-                                        <td>{{ $pro->prices }}</td>
-                                        <td>
-                                            @if(!empty($pro->photo) && file_exists(public_path().'/upload/'.$pro->photo))
-                                                <div class="mr-md-3 mb-2 mb-md-0">
-                                                    <a target="_blank" href="{{url('upload/'.$pro->photo)}}">
-                                                        <img src="{{url('upload/'.$pro->photo)}}" class="rounded-circle"
-                                                             width="42" height="42" alt="">
-                                                    </a>
-                                                </div>
-                                            @endif
-                                        </td>
-                                        <td>{{ $pro->discount }}</td>
+                                        <td>{{ $sess->num_session }}</td>
+                                        <td>{{ $sess->user_id_open }}</td>
+                                        <td>{{ $sess->created_at }}</td>
+                                        <td>{{ $sess->opening_balance }}</td>
+                                        <td>{{ $sess->user_id_close }}</td>
+                                        <td>{{ $sess->close_balance }}</td>
+                                        <td>{{ $sess->close_at }}</td>
                                         <td>
                                             <div class="list-icons">
                                                 <div class="dropdown show">
@@ -261,11 +252,11 @@
                                                     <div class="dropdown-menu" x-placement="bottom-start"
                                                          style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 21px, 0px);">
                                                         <a href="#"
-                                                           class="dropdown-item  updated_expenses{{$pro->product_id}}"
+                                                           class="dropdown-item  updated_expenses{{$sess->session_id}}"
                                                            data-toggle="tooltip"
                                                            data-placement="bottom" title=""
                                                            data-original-title="تعديل "
-                                                           onclick="updated({{$pro->product_id}})"
+                                                           onclick="updated({{$sess->session_id}})"
                                                         > <i class="icon-pencil7"></i> تعديل
                                                         </a>
                                                     </div>
@@ -581,11 +572,11 @@
                         $(block).unblock();
                         document.getElementById("updatedSubmit").disabled = false;
                         if (data.status == 200) {
-                                Swal.fire(
-                                    'احسنت',
-                                    'تم التعديل بنجاح',
-                                    'success'
-                                );
+                            Swal.fire(
+                                'احسنت',
+                                'تم التعديل بنجاح',
+                                'success'
+                            );
                             location.reload();
                         } else {
                             $.each(data.data, function (key, value) {

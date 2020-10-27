@@ -178,6 +178,10 @@
         lengthMenu: [10, 25, 50, 75, 100],
         displayLength: 10
     });
+</script>
+@yield('script')
+
+<script>
     function DisplayTime(timeZoneOffsetminutes){
         if (!document.all && !document.getElementById)
             return
@@ -203,7 +207,6 @@
         return {'h':timeZoneDate.getHours(),'m':timeZoneDate.getMinutes(),'s':timeZoneDate.getSeconds()};
     }
 </script>
-@yield('script')
 
 </body>
 </html>

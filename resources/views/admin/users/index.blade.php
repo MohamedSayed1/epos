@@ -211,8 +211,6 @@
             $('#addSubmit').click(function () {
               var data =  $('#addForm').serialize();
 
-              console.log(data);
-
                 $.ajax({
                     url: '{{url("/dashboard/users")}}',
                     method: 'POST',

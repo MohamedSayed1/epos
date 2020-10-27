@@ -112,4 +112,9 @@ class ProductServices extends Services
         return false;
 
     }
+
+    public function getWithPage($serach =null)
+    {
+        return $this->productRepo->getPage($serach);
+    }
 }

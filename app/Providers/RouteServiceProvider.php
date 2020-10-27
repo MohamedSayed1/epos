@@ -50,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapProductRoutes();
 
+        $this->mapSessionRoutes();
+
         //
     }
 
@@ -79,6 +81,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/product.php'));
+    }
+    protected function mapSessionRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/session.php'));
     }
 
     /**
