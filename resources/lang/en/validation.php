@@ -196,6 +196,7 @@ return [
         'count'=>'العدد',
         'prices'=>'سعر البيع',
         'photo'=>'الصوره',
+        'opening_balance'=>'الرصيد الافتتاحي',
 
 
 

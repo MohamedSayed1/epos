@@ -30,9 +30,11 @@ Route::get('/logout', 'LoginController@logout');
 
 Route::get('/test', 'test@index');
 
+Route::get('/test/open', function () {
+    // \Helmesvs\Notify\Facades\Notify::success('تم الاضافه بنجاح', 'احسنت');
+    return view('admin.session.test');
+});
 
-
-Route::get('/test', 'test@index');
 
 
 Route::prefix('dashboard/users')->group(function () {

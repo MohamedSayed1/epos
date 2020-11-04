@@ -129,6 +129,9 @@
                         <li class="nav-item"><a href="{{url('dashboard/session')}}"
                                                 class="nav-link {{ Request::is('dashboard/session') ? 'active' : '' }}">
                                 الجلسات</a></li>
+                        <li class="nav-item"><a href="{{url('dashboard/session/point')}}"
+                                                class="nav-link {{ Request::is('dashboard/session/point') ? 'active' : '' }}">
+                                الكاشير</a></li>
 
 
                     </ul>

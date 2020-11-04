@@ -35,4 +35,13 @@ class UsersRepo
         return $user->save();
     }
 
+
+    public function Session($seesion)
+    {
+        $user = $this->user->find(Auth()->user()->id);
+        $user->open_seesion = $seesion;
+        return $user->save();
+    }
+
+
 }

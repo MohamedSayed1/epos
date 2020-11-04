@@ -6,6 +6,10 @@ namespace App\Http\Controllers\Sessions;
 
 use App\Http\Controllers\Controller;
 use App\Pos\Services\Sessions\SessionsServices;
+use Helmesvs\Notify\Facades\Notify;
+use Illuminate\Http\Request;
+use Cart;
+use App\Pos\Paid;
 
 class SessionsControllers extends Controller
 {
@@ -18,9 +22,28 @@ class SessionsControllers extends Controller
 
     public function index()
     {
-        $session = $this->sessionSer->getAll();
+        $sessions = $this->sessionSer->getAll();
 
         return view('admin.session.pos')
-            ->with('session',$session);
+            ->with('sessions',$sessions);
     }
+
+
+    public function open(Request $request)
+    {
+        if($this->sessionSer->open($request->all()))
+        {
+            Notify::success('تم الاضافه بنجاح', 'احسنت');
+            return redirect()->back();
+        }
+
+        $errors = $this->sessionSer->errors();
+        Notify::error($errors[0],'نأسف');
+
+        return redirect()->back();
+
+    }
+
+
+
 }
