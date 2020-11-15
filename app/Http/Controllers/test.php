@@ -14,8 +14,9 @@ class test extends Controller
 
     public function index()
     {
+        $x = new SessionsRepo();
 
-       return view('admin.session.print');
+        return $x->getNumper();
 
     }
 }

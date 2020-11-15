@@ -19,4 +19,20 @@ class TransactionRepo
     {
         return $this->tranModel->find($id);
     }
+
+    public function expenses($data)
+    {
+        $this->tranModel->session_id = Auth()->user()->open_seesion;
+        $this->tranModel->user_id    = Auth()->user()->id;
+        $this->tranModel->total      = $data['total'];
+        $this->tranModel->type       = -1;
+        $this->tranModel->status     = "expenses";
+        $this->tranModel->details    = $data['details'];
+       return $this->tranModel->save();
+    }
+
+    public function getBySession($id)
+    {
+        $this->tranModel->with('')
+    }
 }

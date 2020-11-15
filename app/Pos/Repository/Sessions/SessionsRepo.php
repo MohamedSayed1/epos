@@ -42,10 +42,9 @@ class SessionsRepo
         return false;
     }
 
-
     public function getNumper()
     {
-       $num = $this->seesion->latest()->first('num_session');
+       $num = $this->seesion->latest()->first()->num_session;
        return $num + 1 ;
     }
 
@@ -54,6 +53,8 @@ class SessionsRepo
         $user = new UsersRepo();
         return $user->Session($session);
     }
+
+
 
 
 }

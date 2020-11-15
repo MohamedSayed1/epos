@@ -197,6 +197,8 @@ return [
         'prices'=>'سعر البيع',
         'photo'=>'الصوره',
         'opening_balance'=>'الرصيد الافتتاحي',
+        'details'=>'السبب',
+        'total'=>'المبلغ'
 
 
 

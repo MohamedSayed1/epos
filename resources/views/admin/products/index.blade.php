@@ -407,7 +407,6 @@
 
                 }
 
-
                 var name = $('#name').val();
                 var parcod = $('#parcod').val();
                 var count = $('#count').val();

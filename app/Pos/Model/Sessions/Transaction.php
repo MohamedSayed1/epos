@@ -11,4 +11,10 @@ class Transaction extends Model
 
     protected $table      = "transaction";
     protected $primaryKey = "transaction_id";
+
+    public function get()
+    {
+        return $this->hasMany('App\Pos\Model\Sessions\TransactionDetails','trans_id','transaction_id');
+    }
+
 }
