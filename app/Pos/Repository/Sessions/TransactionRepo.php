@@ -5,6 +5,7 @@ namespace App\Pos\Repository\Sessions;
 
 
 use App\Pos\Model\Sessions\Transaction;
+use Illuminate\Support\Facades\DB;
 
 class TransactionRepo
 {
@@ -29,10 +30,5 @@ class TransactionRepo
         $this->tranModel->status     = "expenses";
         $this->tranModel->details    = $data['details'];
        return $this->tranModel->save();
-    }
-
-    public function getBySession($id)
-    {
-        $this->tranModel->with('')
     }
 }

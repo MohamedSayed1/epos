@@ -13,6 +13,9 @@ Route::prefix('dashboard/session')->group(function () {
         Route::get('/point/return', 'PointOfSalleControllers@returnView');
         Route::post('/point/return', 'PointOfSalleControllers@returnProcess');
 
+        Route::get('/point/pref/total/{id?}', 'PointOfSalleControllers@prifSession');
+        Route::post('/point/pref/total', 'PointOfSalleControllers@ProcessClose');
+
 
     });
 });

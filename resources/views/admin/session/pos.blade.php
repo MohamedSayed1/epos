@@ -66,7 +66,13 @@
     </div>
 
 
+    <div id="modal_default3" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modal_close">
 
+            </div>
+        </div>
+    </div>
 
     <!-- Page header -->
     <div class="page-header page-header-light">
@@ -146,6 +152,14 @@
                                                            onclick="updated({{$session->session_id}})"
                                                         > <i class="icon-pencil7"></i> تعديل
                                                         </a>
+                                                        <a href="#"
+                                                           class="dropdown-item"
+                                                           data-toggle="tooltip"
+                                                           data-placement="bottom" title="غلق الورديه"
+                                                           data-original-title="غلق الورديه "
+                                                           onclick="closeSession({{$session->session_id}})"
+                                                        > <i class="icon-close2"></i> غلق الورديه
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,6 +180,7 @@
 
 @section('script')
     <script src="{{asset('template/back/assets/global_assets/js/plugins/ui/prism.min.js')}}"></script>
+    <script src="{{asset('template/back/assets/global_assets/js/plugins/notifications/sweet_alert.min.js')}}"></script>
     <script>
         $('#no-overlay').on('click', function () {
             $('#modal_default').modal('show');
@@ -177,6 +192,50 @@
             $('#name_updated').val(name);
             $('#id').val(id);
             $('#modal_default_2').modal('show');
+        }
+
+
+        function closeSession(id) {
+            $('#modal_default3').modal('show');
+
+            $.ajax({
+                url: '{{url("dashboard/session/point/pref/total")}}'+'/'+id,
+                method: 'get',
+                success: function (data) {
+                    $('#modal_close').html(data);
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
+            });
+        }
+
+        function closeResponse() {
+            var data = $('#closeSession').serialize();
+
+            $.ajax({
+                url: '{{url("dashboard/session/point/pref/total")}}',
+                method: 'post',
+                data:data,
+                success: function (data) {
+                    if (data.status == 200) {
+                        Swal.fire(
+                            'احسنت',
+                            'تم غلق الورديه',
+                            'success'
+                        );
+                        location.reload();
+                    }else{
+                        $.each(data.data, function (key, value) {
+                            $('.' + key + '-updated-error').html(value);
+                        });
+                    }
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
+            });
+
         }
     </script>
 @endsection

@@ -45,4 +45,28 @@ class SessionsServices extends Services
         $this->setError(['برجاء المحاوله مره اخري ']);
         return false;
     }
+
+
+    public function close($data)
+    {
+        $rules = [
+            'balance'     =>'required|numeric',
+            'session'     =>'required',
+        ];
+        // vaild
+        $validator = Validator::make($data,$rules);
+
+        if($validator->fails())
+        {
+            $this->setError($validator->errors());
+            return false;
+        }
+
+        if($this->sessionRepo->close($data))
+            return true;
+
+
+        $this->setError(['برجاء المحاوله مره اخري ']);
+        return false;
+    }
 }

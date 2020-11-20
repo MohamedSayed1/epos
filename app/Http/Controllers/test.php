@@ -2,8 +2,11 @@
 
 
 namespace App\Http\Controllers;
+use App\Pos\Model\Sessions\Transaction;
+use App\Pos\Paid;
 use App\Pos\Repository\Products\ProductsRepo;
 use App\Pos\Repository\Sessions\SessionsRepo;
+use App\Pos\Repository\Sessions\TransactionRepo;
 use App\User;
 use Illuminate\Support\Facades\File;
 
@@ -14,9 +17,10 @@ class test extends Controller
 
     public function index()
     {
-        $x = new SessionsRepo();
+        $x = new TransactionRepo();
 
-        return $x->getNumper();
+        return Paid::PinkBrief(2);
+
 
     }
 }

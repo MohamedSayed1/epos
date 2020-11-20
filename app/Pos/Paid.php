@@ -5,6 +5,7 @@ namespace App\Pos;
 
 
 use App\Pos\Model\Products\Products;
+use App\Pos\Model\Sessions\Sessions;
 use App\Pos\Model\Sessions\Transaction;
 use App\Pos\Model\Sessions\TransactionDetails;
 use Cart;
@@ -73,4 +74,23 @@ trait Paid
 
 
     }
+
+    public static function PinkBrief($session_id)
+    {
+     $session   = Sessions::find($session_id)->opening_balance;
+     $tran      = Transaction::where('session_id',$session_id)->get();
+     $sales     = $tran->where('type','=',1)->sum('total');
+     $expenses  = $tran->where('type','=',-1)->sum('total');
+     $total      = $tran->sum('total');
+     return [
+         'total'=>$total,
+         'sales'=>$sales,
+         'expenses'=>$expenses,
+         'opening'=>$session,
+         'actual'=> ($sales - $expenses)+ $session,
+         'id'=> $session_id,
+         ] ;
+    }
+
+    
 }

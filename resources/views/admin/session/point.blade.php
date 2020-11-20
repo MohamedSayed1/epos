@@ -50,9 +50,18 @@
             </div>
         </div>
     </div>
+
     <div id="modal_default2" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content" id="modal_expenses">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="modal_default3" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modal_close">
 
             </div>
         </div>
@@ -210,7 +219,7 @@
                                 <a href="#" onclick="expenses()" class="text-default" title="مصروفات"><i class="icon-exit3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" class="text-default" title="غلق الورديه" ><i class="icon-switch"></i></a>
+                                <a href="#" onclick="closeSession()" class="text-default" title="غلق الورديه" ><i class="icon-switch"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -454,7 +463,6 @@
         }
 
         function expesnes_send() {
-
             $.ajax({
                 url: '{{url("card/expenses/view")}}',
                 method: 'post',
@@ -483,6 +491,53 @@
                 }
             });
         }
+
+        function closeSession() {
+            $('#modal_default3').modal('show');
+
+            var session_id = '{{Auth()->user()->open_seesion}}' ;
+
+            $.ajax({
+                url: '{{url("dashboard/session/point/pref/total")}}'+'/'+session_id,
+                method: 'get',
+                success: function (data) {
+                    $('#modal_close').html(data);
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
+            });
+        }
+
+        function closeResponse() {
+           var data = $('#closeSession').serialize();
+
+            $.ajax({
+                url: '{{url("dashboard/session/point/pref/total")}}',
+                method: 'post',
+                data:data,
+                success: function (data) {
+                    if (data.status == 200) {
+                        Swal.fire(
+                            'احسنت',
+                            'تم غلق الورديه',
+                            'success'
+                        );
+                        location.reload();
+                    }else{
+                        $.each(data.data, function (key, value) {
+                            $('.' + key + '-updated-error').html(value);
+                        });
+                    }
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
+            });
+
+        }
+
+
 
     </script>
 

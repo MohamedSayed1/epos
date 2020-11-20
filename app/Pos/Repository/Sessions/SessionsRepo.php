@@ -6,6 +6,9 @@ namespace App\Pos\Repository\Sessions;
 
 use App\Pos\Model\Sessions\Sessions;
 use App\Pos\Repository\Users\UsersRepo;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsRepo
 {
@@ -42,17 +45,50 @@ class SessionsRepo
         return false;
     }
 
+    public function close($data)
+    {
+        $close = $this->seesion->find($data['session']);
+        $close->user_id_close = Auth()->user()->id;
+        $close->close_balance = $data['balance'];
+        $close->type          = 0;
+        $close->close_at      = Carbon::now();
+        if($close->save())
+        {
+            if($close->user_id_open == Auth()->user()->id)
+            {
+                if($this->updatedUser(null))
+                    return true;
+            }
+            else{
+                $this->closeUserSession($close->user_id_open);
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     public function getNumper()
     {
        $num = $this->seesion->latest()->first()->num_session;
        return $num + 1 ;
     }
 
+
+
     private  function  updatedUser($session)
     {
         $user = new UsersRepo();
         return $user->Session($session);
     }
+
+    private function closeUserSession($userId)
+    {
+        $user = User::find($userId);
+        $user->open_seesion = null;
+    }
+
+
 
 
 
