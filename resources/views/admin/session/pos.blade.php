@@ -13,8 +13,9 @@
                     <div class="modal-body">
                         <div class="col-md-12">
                             <label>الرصيد الافتتاحي</label>
-                            <input type="number" min="0" step='any' name="opening_balance" class="form-control" value="{{old('opening_balance')}}" required>
-                                <span class="help-block">
+                            <input type="number" min="0" step='any' name="opening_balance" class="form-control"
+                                   value="{{old('opening_balance')}}" required>
+                            <span class="help-block">
                                      <strong class="text-danger opening_balance-errors">{{$errors->first('opening_balance')}}</strong>
                                 </span>
                         </div>
@@ -39,23 +40,23 @@
                     <h5 class="modal-title">تعديل</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <form action="{{url('dashboard/expenses/updated')}}" method="post">
+                <form id="updated_session">
                     <div class="modal-body">
                         <div class="col-md-12">
-                            <label>الاسم</label>
-                            <input type="text" name="name" id="name_updated" class="form-control" value="{{old('name')}}">
-                            @if ($errors->has('name'))
-                                <span class="help-block">
-                                     <strong class="text-danger">{{$errors->first('name')}}</strong>
-                                </span>
-                            @endif
+                            <label>الرصيد الافتتاحي</label>
+                            <input type="number" min="0" step='any' name="opening_balance" id="balance_updated"
+                                   class="form-control" value="">
+                            <span class="help-block">
+                                  <strong class="text-danger opening_balance-error"></strong>
+                              </span>
                         </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input id="id" type="hidden" name="id" value="">
                     </div>
 
                     <div class="modal-footer ">
-                        <button type="submit" class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
+                        <button type="button" onclick="updatedProcess()"
+                                class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
                                         class="icon-checkmark2"></i></b>حفظ
                         </button>
                         <button type="button" class="btn btn-link" data-dismiss="modal">اغلاق</button>
@@ -102,11 +103,11 @@
                     <div class="card-header header-elements-inline">
                         <h6 class="card-title">
                             @if(Auth()->user()->open_seesion == null)
-                            <button id="no-overlay" type="button"
-                                    class="btn btn-primary btn-labeled btn-labeled-left btn-lg"><b><i
-                                            class="icon-plus-circle2"></i></b> فتح جلسه
-                            </button>
-                           @endif
+                                <button id="no-overlay" type="button"
+                                        class="btn btn-primary btn-labeled btn-labeled-left btn-lg"><b><i
+                                                class="icon-plus-circle2"></i></b> فتح جلسه
+                                </button>
+                            @endif
                         </h6>
                     </div>
                     <div class="card-body">
@@ -138,31 +139,35 @@
                                         <td>{{ $session->close_balance }}</td>
                                         <td>{{ $session->close_at }}</td>
                                         <td>
+                                            @if($session->type == 1)
                                             <div class="list-icons">
                                                 <div class="dropdown show">
                                                     <a href="#" class="list-icons-item" data-toggle="dropdown"
                                                        aria-expanded="top"><i class="icon-menu9"></i></a>
                                                     <div class="dropdown-menu" x-placement="bottom-start"
                                                          style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 21px, 0px);">
-                                                        <a href="#"
-                                                           class="dropdown-item  updated_expenses{{$session->session_id}}"
-                                                           data-toggle="tooltip"
-                                                           data-placement="bottom" title=""
-                                                           data-original-title="تعديل "
-                                                           onclick="updated({{$session->session_id}})"
-                                                        > <i class="icon-pencil7"></i> تعديل
-                                                        </a>
-                                                        <a href="#"
-                                                           class="dropdown-item"
-                                                           data-toggle="tooltip"
-                                                           data-placement="bottom" title="غلق الورديه"
-                                                           data-original-title="غلق الورديه "
-                                                           onclick="closeSession({{$session->session_id}})"
-                                                        > <i class="icon-close2"></i> غلق الورديه
-                                                        </a>
+                                                            <a href="#"
+                                                               class="dropdown-item  updated_expenses{{$session->session_id}}"
+                                                               data-toggle="tooltip"
+                                                               data-placement="bottom" title=""
+                                                               data-original-title="تعديل "
+                                                               onclick="updated({{$session->session_id}},{{$session->opening_balance}})"
+                                                            > <i class="icon-pencil7"></i> تعديل
+                                                            </a>
+
+                                                            <a href="#"
+                                                               class="dropdown-item"
+                                                               data-toggle="tooltip"
+                                                               data-placement="bottom" title="غلق الورديه"
+                                                               data-original-title="غلق الورديه "
+                                                               onclick="closeSession({{$session->session_id}})"
+                                                            > <i class="icon-file-locked2"></i> غلق الورديه
+                                                            </a>
+
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -186,12 +191,38 @@
             $('#modal_default').modal('show');
         });
 
-        function  updated(id)
-        {
-            var name =  $('.updated_expenses'+id).data('name');
-            $('#name_updated').val(name);
+        function updated(id, balance) {
+
+            $('#balance_updated').val(balance);
             $('#id').val(id);
             $('#modal_default_2').modal('show');
+        }
+
+        function updatedProcess() {
+            var data = $('#updated_session').serialize();
+
+            $.ajax({
+                url: '{{url("dashboard/session/updated")}}',
+                method: 'post',
+                data: data,
+                success: function (data) {
+                    if (data.status == 200) {
+                        Swal.fire(
+                            'احسنت',
+                            'تم التعديل بنجاح',
+                            'success'
+                        );
+                        location.reload();
+                    } else {
+                        $.each(data.data, function (key, value) {
+                            $('.' + key + '-error').html(value);
+                        });
+                    }
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
+            });
         }
 
 
@@ -199,7 +230,7 @@
             $('#modal_default3').modal('show');
 
             $.ajax({
-                url: '{{url("dashboard/session/point/pref/total")}}'+'/'+id,
+                url: '{{url("dashboard/session/point/pref/total")}}' + '/' + id,
                 method: 'get',
                 success: function (data) {
                     $('#modal_close').html(data);
@@ -216,7 +247,7 @@
             $.ajax({
                 url: '{{url("dashboard/session/point/pref/total")}}',
                 method: 'post',
-                data:data,
+                data: data,
                 success: function (data) {
                     if (data.status == 200) {
                         Swal.fire(
@@ -225,7 +256,7 @@
                             'success'
                         );
                         location.reload();
-                    }else{
+                    } else {
                         $.each(data.data, function (key, value) {
                             $('.' + key + '-updated-error').html(value);
                         });

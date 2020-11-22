@@ -68,6 +68,15 @@ class SessionsRepo
         return false;
     }
 
+    public function updated($data)
+    {
+        $updated = $this->seesion->find($data['id']);
+
+        $updated->opening_balance  = $data['opening_balance'];
+
+        return $updated->save();
+    }
+
     public function getNumper()
     {
        $num = $this->seesion->latest()->first()->num_session;
@@ -86,6 +95,7 @@ class SessionsRepo
     {
         $user = User::find($userId);
         $user->open_seesion = null;
+       return  $user->save();
     }
 
 

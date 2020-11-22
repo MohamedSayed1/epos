@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a235c12-8d5d-4003-9266-59430c085a07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/session/priefSession.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Sessions/PointOfSalleControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Sessions/PointOfSalleControllers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Pos/Paid.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pos/Paid.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Pos/Repository/Sessions/TransactionRepo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pos/Repository/Sessions/TransactionRepo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/session/point.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/session/point.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/session/pos.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/session/pos.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/session.php" afterDir="false" />
@@ -29,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Sessions/PointOfSalleControllers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="102" column="24" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
+            <state relative-caret-position="211">
+              <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="108" selection-end-column="69" />
               <folding>
                 <element signature="e#51#87#0#PHP" expanded="true" />
               </folding>
@@ -39,9 +34,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="47" column="27" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="27" />
+              <folding>
+                <element signature="e#51#87#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/session.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="29" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/cartControllers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1356">
+            <state relative-caret-position="1496">
               <caret line="73" selection-start-line="73" selection-end-line="73" />
               <folding>
                 <element signature="e#43#79#0#PHP" expanded="true" />
@@ -53,23 +69,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
+            <state relative-caret-position="233">
               <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
               <folding>
                 <element signature="e#47#92#0#PHP" expanded="true" />
+                <element signature="e#1420#1927#0#PHP" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
+            <state relative-caret-position="255">
+              <caret line="97" column="6" selection-start-line="97" selection-start-column="6" selection-end-line="97" selection-end-column="6" />
               <folding>
                 <element signature="e#49#85#0#PHP" expanded="true" />
-                <element signature="e#905#1031#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -78,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/lang/en/validation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
+            <state relative-caret-position="4444">
               <caret line="202" column="8" selection-start-line="202" selection-start-column="8" selection-end-line="202" selection-end-column="8" />
             </state>
           </provider>
@@ -87,28 +103,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/session/point.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="236" selection-start-line="236" selection-end-line="236" selection-end-column="119" />
-              <folding>
-                <element signature="e#51#953#0#HTML" />
-                <element signature="e#17311#18305#0#HTML" />
-                <element signature="e#18559#18583#0#HTML" />
-                <element signature="e#19118#19142#0#HTML" />
-              </folding>
+            <state relative-caret-position="519">
+              <caret line="221" column="138" selection-start-line="221" selection-start-column="138" selection-end-line="221" selection-end-column="138" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/session/pos.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2552">
-              <caret line="182" column="119" selection-start-line="182" selection-start-column="119" selection-end-line="182" selection-end-column="119" />
+            <state relative-caret-position="259">
+              <caret line="168" column="50" selection-start-line="168" selection-start-column="50" selection-end-line="168" selection-end-column="50" />
               <folding>
-                <element signature="e#81#1669#0#HTML" />
-                <element signature="e#1699#3372#0#HTML" />
-                <element signature="e#7211#7863#0#HTML" />
-                <element signature="e#10121#11021#0#HTML" />
+                <element signature="e#6859#9172#0#HTML" />
+                <element signature="e#7241#7353#0#HTML" expanded="true" />
+                <element signature="e#9913#10347#0#HTML" />
+                <element signature="e#10459#11270#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -117,8 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/session/priefSession.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="46" column="40" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="40" />
+            <state relative-caret-position="321">
+              <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -127,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Choose File</find>
       <find>addForm</find>
       <find>add_customer_store</find>
       <find>ajaxForm</find>
@@ -157,6 +166,7 @@
       <find>but</find>
       <find>subm</find>
       <find>savebill</find>
+      <find>balance_updated</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -187,7 +197,6 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/session/product.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/layout/layout.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/session/paymodel.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/session/cart.blade.php" />
         <option value="G:/filerole/resources/views/pos/pos_print.blade.php" />
@@ -206,16 +215,17 @@
         <option value="$PROJECT_DIR$/app/Pos/Model/Sessions/Transaction.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/test.php" />
         <option value="$PROJECT_DIR$/app/Pos/Repository/Sessions/TransactionRepo.php" />
-        <option value="$PROJECT_DIR$/routes/session.php" />
         <option value="$PROJECT_DIR$/app/Pos/Paid.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/session/point.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/session/priefSession.blade.php" />
-        <option value="$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/validation.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Sessions/PointOfSalleControllers.php" />
-        <option value="$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/products/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/session/point.blade.php" />
+        <option value="$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php" />
+        <option value="$PROJECT_DIR$/routes/session.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/session/pos.blade.php" />
+        <option value="$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php" />
       </list>
     </option>
   </component>
@@ -320,7 +330,7 @@
       <path value="$PROJECT_DIR$/vendor/olimortimer/laravelshoppingcart" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="348" />
     <option name="y" value="194" />
     <option name="width" value="873" />
@@ -367,6 +377,14 @@
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="Products" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="epos" type="b2602c69:ProjectViewProjectNode" />
+              <item name="epos" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Sessions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="epos" type="b2602c69:ProjectViewProjectNode" />
@@ -526,18 +544,22 @@
       <workItem from="1605864407251" duration="598000" />
       <workItem from="1605865931631" duration="596000" />
       <workItem from="1605867536170" duration="599000" />
-      <workItem from="1605868244822" duration="11742000" />
+      <workItem from="1605868244822" duration="12173000" />
+      <workItem from="1605940455885" duration="5000" />
+      <workItem from="1605940583684" duration="29000" />
+      <workItem from="1605940672370" duration="29000" />
+      <workItem from="1605941163128" duration="6005000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="362440000" />
+    <option name="totallyTimeSpent" value="368939000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18532526" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18532526" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -715,16 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#51#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
@@ -877,13 +889,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Pos/Paid.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
@@ -900,61 +905,6 @@
           <caret line="56" column="7" selection-start-line="56" selection-start-column="7" selection-end-line="57" selection-end-column="69" />
           <folding>
             <element signature="e#51#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/session/priefSession.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/en/validation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="202" column="8" selection-start-line="202" selection-start-column="8" selection-end-line="202" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-          <folding>
-            <element signature="e#47#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
-          <folding>
-            <element signature="e#49#85#0#PHP" expanded="true" />
-            <element signature="e#905#1031#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Sessions/PointOfSalleControllers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="102" column="24" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="24" />
-          <folding>
-            <element signature="e#51#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/cartControllers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1356">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="e#43#79#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -982,28 +932,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/cartControllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding>
+            <element signature="e#43#79#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/lang/en/validation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4444">
+          <caret line="202" column="8" selection-start-line="202" selection-start-column="8" selection-end-line="202" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/session/priefSession.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Sessions/PointOfSalleControllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="108" selection-end-column="69" />
+          <folding>
+            <element signature="e#51#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Sessions/SessionsControllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="27" />
+          <folding>
+            <element signature="e#51#87#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/session/point.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="236" selection-start-line="236" selection-end-line="236" selection-end-column="119" />
-          <folding>
-            <element signature="e#51#953#0#HTML" />
-            <element signature="e#17311#18305#0#HTML" />
-            <element signature="e#18559#18583#0#HTML" />
-            <element signature="e#19118#19142#0#HTML" />
-          </folding>
+        <state relative-caret-position="519">
+          <caret line="221" column="138" selection-start-line="221" selection-start-column="138" selection-end-line="221" selection-end-column="138" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/session/pos.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2552">
-          <caret line="182" column="119" selection-start-line="182" selection-start-column="119" selection-end-line="182" selection-end-column="119" />
+        <state relative-caret-position="259">
+          <caret line="168" column="50" selection-start-line="168" selection-start-column="50" selection-end-line="168" selection-end-column="50" />
           <folding>
-            <element signature="e#81#1669#0#HTML" />
-            <element signature="e#1699#3372#0#HTML" />
-            <element signature="e#7211#7863#0#HTML" />
-            <element signature="e#10121#11021#0#HTML" />
+            <element signature="e#6859#9172#0#HTML" />
+            <element signature="e#7241#7353#0#HTML" expanded="true" />
+            <element signature="e#9913#10347#0#HTML" />
+            <element signature="e#10459#11270#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Pos/Services/Sessions/SessionsServices.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+          <folding>
+            <element signature="e#47#92#0#PHP" expanded="true" />
+            <element signature="e#1420#1927#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Pos/Repository/Sessions/SessionsRepo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="97" column="6" selection-start-line="97" selection-start-column="6" selection-end-line="97" selection-end-column="6" />
+          <folding>
+            <element signature="e#49#85#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

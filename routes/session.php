@@ -6,6 +6,8 @@ Route::prefix('dashboard/session')->group(function () {
         Route::get('/', 'SessionsControllers@index');
         Route::post('/', 'SessionsControllers@open');
 
+        Route::post('/updated', 'SessionsControllers@updated');
+
 
         Route::get('/point', 'PointOfSalleControllers@Point');
         Route::get('/point/get/bill/{id?}', 'PointOfSalleControllers@printReset');

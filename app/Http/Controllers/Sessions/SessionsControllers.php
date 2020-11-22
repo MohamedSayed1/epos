@@ -45,5 +45,17 @@ class SessionsControllers extends Controller
     }
 
 
+    public function updated(Request $request)
+    {
+        if($this->sessionSer->updated($request->all()))
+            return response()->json(['status'=> 200]) ;
+
+
+
+        $errors =  $this->sessionSer->errors();
+        return response()->json(['status'=> 201,'data'=> $errors ]) ;
+    }
+
+
 
 }

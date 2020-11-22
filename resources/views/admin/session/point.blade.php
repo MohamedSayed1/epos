@@ -219,7 +219,7 @@
                                 <a href="#" onclick="expenses()" class="text-default" title="مصروفات"><i class="icon-exit3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" onclick="closeSession()" class="text-default" title="غلق الورديه" ><i class="icon-switch"></i></a>
+                                <a href="#" onclick="closeSession()" class="text-default" title="غلق الورديه" ><i class="icon-file-locked2"></i></a>
                             </li>
                         </ul>
                     </div>
