@@ -60,7 +60,7 @@
                     </a>
                 </li>
 
-
+                <!--    expenses      -->
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">المصروفات</div>
                     <i class="icon-menu" title="Layout options"></i></li>
@@ -88,11 +88,35 @@
                     </ul>
                 </li>
 
+
+                <!--    expenses      -->
+
+                <!--    Purchases   -->
+
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">المشتريات</div>
+                    <i class="icon-menu" title="Layout options"></i></li>
+                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/purchases*') ? 'nav-item-open' : '' }}">
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/purchases*') ? 'active' : '' }}"><i
+                                class="icon-basket"></i> <span>المشتريات</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                        style="{{ Request::is('dashboard/purchases*') ? 'display: block;' : '' }}">
+                        <li class="nav-item"><a href="{{url('dashboard/purchases/add')}}"
+                                                class="nav-link {{ Request::is('dashboard/purchases/add') ? 'active' : '' }}">
+                                اضافه فاتوره</a></li>
+                        <li class="nav-item"><a href="{{url('dashboard/purchases')}}"
+                                                class="nav-link {{ Request::is('dashboard/purchases') ? 'active' : '' }}">
+                                الفواتير</a></li>
+                    </ul>
+                </li>
+
+                <!--    Purchases  -->
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">المنتجات</div>
                     <i class="icon-menu" title="Layout options"></i></li>
-                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/products*') ? 'nav-item-open' : '' }}">
-                    <a href="#" class="nav-link  {{ Request::is('dashboard/products*') ? 'active' : '' }}"><i
+                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/purchases*') ? 'nav-item-open' : '' }}">
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/purchases*') ? 'active' : '' }}"><i
                                 class="icon-cart5"></i> <span>المنتجات</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts"

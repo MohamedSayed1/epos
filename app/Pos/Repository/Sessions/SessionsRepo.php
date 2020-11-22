@@ -95,7 +95,7 @@ class SessionsRepo
     {
         $user = User::find($userId);
         $user->open_seesion = null;
-       return  $user->save();
+        return  $user->save();
     }
 
 
