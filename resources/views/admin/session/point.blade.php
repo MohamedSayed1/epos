@@ -239,6 +239,7 @@
     <script src="{{asset('template/back/assets/global_assets/js/plugins/forms/inputs/touchspin.min.js')}}"></script>
 
     <script>
+        /*   get Product */
         $(document).ready(function () {
             $(document).on('click', '.page-link', function (event) {
                 event.preventDefault();
@@ -266,6 +267,10 @@
             }
         });
 
+        /*   End Product */
+
+        /*   calculator */
+
         var inputLabel = document.getElementById('inputLabel');
 
         function pushBtn(obj) {
@@ -291,6 +296,33 @@
 
         }
 
+        /*  End calculator */
+
+        /*  Cart  */
+        /*  add  */
+        function addCard(id) {
+            $.ajax({
+                url: '{{url("card/add/")}}/' + id,
+                method: 'get',
+                success: function (data) {
+                    $('#cart_product').html(data);
+                    $('.touchspin-no-mousewheel').TouchSpin({
+                        mousewheel: false
+                    });
+                    $('.media-list').css({
+                        'max-height': '28%',
+                        'overflow-y': 'auto',
+                        'height': '300px',
+                    });
+
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
+            });
+
+        }
+        /*  updated   */
         function quty(id, object) {
             $.ajax({
                 url: '{{url("card/updated")}}',
@@ -317,30 +349,7 @@
                 }
             });
         }
-
-        function addCard(id) {
-            $.ajax({
-                url: '{{url("card/add/")}}/' + id,
-                method: 'get',
-                success: function (data) {
-                    $('#cart_product').html(data);
-                    $('.touchspin-no-mousewheel').TouchSpin({
-                        mousewheel: false
-                    });
-                    $('.media-list').css({
-                        'max-height': '28%',
-                        'overflow-y': 'auto',
-                        'height': '300px',
-                    });
-
-                },
-                error: function (data) {
-                    alert('برجاء المحاوله مره اخري .. ');
-                }
-            });
-
-        }
-
+       /* deleted  */
         function deleteCart(id) {
 
             $.ajax({
@@ -369,7 +378,6 @@
 
 
         }
-
         function dumpbill() {
             $.ajax({
                 url: '{{url("card/dump")}}',
@@ -385,7 +393,7 @@
                 }
             });
         }
-
+        /* save and pay   */
         function pay() {
 
             $('#modal_default').modal('show');
@@ -402,18 +410,10 @@
             });
 
         }
-
-        function rest(object, total) {
-            var paid = object.value;
-            var oprate = Number(paid) - Number(total);
-            $('#rest_total').html(oprate);
-
-
-        }
-
         function savebill() {
+            var dic = $('#discount').val();
             $.ajax({
-                url: '{{url("card/paid")}}',
+                url: '{{url("card/paid")}}'+'/'+dic,
                 method: 'get',
                 success: function (data) {
 
@@ -445,7 +445,26 @@
             });
 
         }
-        
+        /*  Accounts total & discount */
+        function rest(object, total) {
+            var paid = object.value;
+            var dic  = $('#discount').val();
+            var etotal = Number(total) - Number(dic);
+            var oprate = Number(paid) - Number(etotal);
+            $('#rest_total').html(oprate);
+        }
+
+        function discount_res(ob,object) {
+            var paid = object;
+            var total  = $('#paid_total').val();
+            var dic   = ob.value;
+            var etotal = Number(paid) - Number(dic);
+            var oprate =  Number(total) - Number(etotal);
+            $('#rest_total').html(oprate);
+        }
+        /* end Cart  */
+        /*  Expenses */
+        /*  Expenses */
         function expenses() {
             $('#modal_default2').modal('show');
 
@@ -461,7 +480,6 @@
             });
 
         }
-
         function expesnes_send() {
             $.ajax({
                 url: '{{url("card/expenses/view")}}',
@@ -491,7 +509,8 @@
                 }
             });
         }
-
+        /* End Expenses */
+        /*   Close Session */
         function closeSession() {
             $('#modal_default3').modal('show');
 
@@ -508,7 +527,6 @@
                 }
             });
         }
-
         function closeResponse() {
            var data = $('#closeSession').serialize();
 
@@ -536,8 +554,7 @@
             });
 
         }
-
-
+        /* End  Close Session */
 
     </script>
 

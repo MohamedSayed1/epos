@@ -51,7 +51,7 @@ class ProductsRepo
 
     public function getProducts()
     {
-        return $this->product->get();
+        return $this->product->orderBy('updated_at', 'DESC')->get();
     }
 
 

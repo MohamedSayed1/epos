@@ -115,8 +115,8 @@
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">المنتجات</div>
                     <i class="icon-menu" title="Layout options"></i></li>
-                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/purchases*') ? 'nav-item-open' : '' }}">
-                    <a href="#" class="nav-link  {{ Request::is('dashboard/purchases*') ? 'active' : '' }}"><i
+                <li class="nav-item nav-item-submenu {{ Request::is('dashboard/products*') ? 'nav-item-open' : '' }}">
+                    <a href="#" class="nav-link  {{ Request::is('dashboard/products*') ? 'active' : '' }}"><i
                                 class="icon-cart5"></i> <span>المنتجات</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Layouts"

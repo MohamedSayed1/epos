@@ -6,65 +6,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">اضافه منتج جديد</h5>
+                    <h5 class="modal-title">الصنف </h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <form id="addForm" method="post" action="#" enctype="multipart/form-data">
                     <div class="modal-body modael_here">
-                        <div class="col-md-12">
-                            <label><span class="text-danger">*</span>الاسم</label>
-                            <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}"
-                                   required>
-                            <span class="help-block">
-                                     <strong class="name-error text-danger"></strong>
-                                </span>
 
-                        </div>
-                        <div class="col-md-12">
-                            <label>البركود</label>
-                            <input type="text" name="parcod" id="parcod" class="form-control" value="{{old('parcod')}}">
-                            <span class="help-block">
-                                     <strong class="parcod-error text-danger"></strong>
-                                </span>
-
-                        </div>
-                        <div class="col-md-12">
-                            <label><span class="text-danger">*</span>العدد</label>
-                            <input type="number" min="0" id="count" step='any' name="count" class="form-control"
-                                   value="{{old('count')}}" required>
-                            <span class="help-block">
-                                     <strong class="count-error text-danger"></strong>
-                                </span>
-
-                        </div>
-                        <div class="col-md-12">
-                            <label><span class="text-danger">*</span>سعر التكلفة </label>
-                            <input type="number" min="0" step='any' id="pruch_prices" name="pruch_prices"
-                                   class="form-control"
-                                   value="{{old('pruch_prices')}}" required>
-                            @if ($errors->has('pruch_prices'))
-                                <span class="help-block">
-                                     <strong class="pruch_prices-error text-danger"></strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="col-md-12">
-                            <label><span class="text-danger">*</span>سعر البيع</label>
-                            <input type="number" min="0" step='any' id="prices" name="prices" class="form-control"
-                                   value="{{old('prices')}}" required>
-                            <span class="help-block">
-                                     <strong class="prices-error text-danger"></strong>
-                                </span>
-                        </div>
-                        <div class="form-group">
-                            <label>الصوره</label>
-                            <input type="file" name="photo" id="photo" class="form-input-styled" data-fouc>
-                            <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
-                            <span class="help-block">
-                                     <strong class="photo-error text-danger"></strong>
-                                </span>
-
-                        </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     </div>
 
@@ -92,7 +39,7 @@
                         <i class="icon-home2 mr-2"></i> الرئيسيه</a>
                     <a href="{{ url('/dashboard/purchases') }}" class="breadcrumb-item">
                         الفواتير</a>
-                    <span class="breadcrumb-item active">اضافه فاتوره</span>
+                    <span class="breadcrumb-item active">تعديل الفاتوره رقم {{$purchas->in_num}}</span>
                 </div>
             </div>
         </div>
@@ -100,20 +47,7 @@
 
     <div class="content">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card card-body border-top-1 border-top-pink">
-                    <div class="text-center">
-                        <h6 class="m-0 font-weight-semibold">اضافه منتج</h6>
-                        <p class="text-muted mb-3">هنا تستطيع اضافه منتج جديد</p>
-
-                        <button type="button" onclick="addProd()" class="btn btn-primary legitRipple"><i
-                                    class="icon-plus-circle2 mr-2"></i>اضافه
-                        </button>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-12">
-
                 <div class="card">
                     <div class="card-body">
                         <form action="{{url('dashboard/purchases/add')}}" method="post">
@@ -126,7 +60,7 @@
                                 <div class="col-md-4">
                                     <label><span class="text-danger">*</span>اسم المورد</label>
                                     <input type="text" name="name" id="name_" class="form-control"
-                                           value="{{old('name')}}"
+                                           value="{{old('name')!= null ?old('name'):$purchas->supplier_name}}"
                                            required>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -137,11 +71,23 @@
                                 <div class="col-md-4">
                                     <label><span class="text-danger">*</span>تاريخ</label>
                                     <input type="date" name="data_ion" id="data_ion" class="form-control"
-                                           value="{{old('data_ion')}}"
+                                           value="{{old('data_ion')!= null ?old('data_ion'):$purchas->in_data}}"
                                            required>
                                     @if ($errors->has('data_ion'))
                                         <span class="help-block">
                                      <strong class="data_ion-error text-danger">{{ $errors->first('data_ion') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-4">
+                                    <label><span class="text-danger">*</span>اجمالي الفاتوره</label>
+                                    <input type="number" name="in_total" min="1" step="any" id="in_total"
+                                           class="form-control"
+                                           value="{{old('in_total')!= null ?old('in_total'):$purchas->in_total}}"
+                                           required>
+                                    @if ($errors->has('in_total'))
+                                        <span class="help-block">
+                                     <strong class="in_total-error text-danger">{{ $errors->first('in_total') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -161,20 +107,53 @@
                                     <th>العدد</th>
                                     <th>سعر الشراء</th>
                                     <th> سعر البيع</th>
+                                    <th>الاعدادات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                @if(isset($detalis))
+                                    @foreach($detalis as $detali)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$detali->product->name}}</td>
+                                            <td>{{$detali->count}}</td>
+                                            <td>{{$detali->pruch_prices}}</td>
+                                            <td>{{$detali->prices}}</td>
+                                            <td>
+                                                <div class="list-icons">
+                                                    <div class="dropdown show">
+                                                        <a href="#" class="list-icons-item" data-toggle="dropdown"
+                                                           aria-expanded="top"><i class="icon-menu9"></i></a>
+                                                        <div class="dropdown-menu" x-placement="bottom-start"
+                                                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 21px, 0px);">
+                                                            <a href="#"
+                                                               onclick="updatedDetailsview({{$detali->pur_id}})"
+                                                               class="dropdown-item"
+                                                               data-toggle="tooltip"
+                                                               data-placement="bottom" title=""
+                                                               data-original-title="تعديل "
+                                                            > <i class="icon-pencil7"></i> تعديل
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                                 </tbody>
                             </table>
                             <br>
                             <hr>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
 
+                            <button type="button" onclick="addmore()"
+                                    class="btn btn-success btn-labeled btn-labeled-left btn-lg"><b><i
+                                            class="icon-plus2"></i></b> اضافه سطر
+                            </button>
                             <button type="submit" class="btn btn-primary btn-labeled btn-labeled-left btn-lg"><b><i
                                             class="icon-file-plus"></i></b> حفظ
                             </button>
-
 
                         </form>
                     </div>
@@ -201,11 +180,6 @@
             }
 
         });
-
-
-        function addProd() {
-            $('#modal_default').modal('show');
-        }
 
         function addmore() {
             $.ajax({
@@ -260,112 +234,35 @@
                     <input type="number" min="0" step="any" name="prices[]"
                            class="form-control" required>
                 </td>
+                <td> </td>
             </tr>`
             );
             $('.select-search').select2();
         }
 
-
-        $(document).ready(function () {
-            addmore();
-            $('#addSubmit').click(function () {
-                if ($('#photo')[0].files.length != 0) {
-                    var photo = $('#photo')[0].files[0];
-
-                }
-
-                var name = $('#name').val();
-                var parcod = $('#parcod').val();
-                var count = $('#count').val();
-                var pruch_prices = $('#pruch_prices').val();
-                var prices = $('#prices').val();
-
-                var formItem = new FormData();
-                formItem.append("_token", '{!! csrf_token() !!}');
-                formItem.append("name", name);
-                formItem.append("parcod", parcod);
-                formItem.append("count", count);
-                formItem.append("pruch_prices", pruch_prices);
-                formItem.append("prices", prices);
-                if ($('#photo')[0].files.length != 0) {
-                    formItem.append("photo", photo);
-                }
-
-
-                $.ajax({
-                    url: '{{url("/dashboard/products")}}',
-                    method: 'POST',
-                    data: formItem,
-                    processData: false,
-                    contentType: false,
-                    beforeSend: function () {
-                        var block = $('.modael_here');
-                        $(block).block({
-                            message: '<span class="font-weight-semibold float-left left">..برجاء الانتظار</span>',
-                            overlayCSS: {
-                                backgroundColor: '#1b2024',
-                                opacity: 0.8,
-                                zIndex: 1200,
-                                cursor: 'wait'
-                            },
-                            css: {
-                                border: 0,
-                                color: '#fff',
-                                padding: 10,
-                                zIndex: 1201,
-                                backgroundColor: 'transparent'
-                            },
-                        });
-                        $('.photo-error').html('');
-                        $('.name-error').html('');
-                        $('.parcod-error').html('');
-                        $('.count-error').html('');
-                        $('.pruch_prices-error').html('');
-                        $('.prices-error').html('');
-                    },
-                    success: function (data) {
-                        var block = $('.modael_here');
-                        $(block).unblock();
-                        if (data.status == 200) {
-                            Swal.fire(
-                                'احسنت',
-                                'تم اضافه المنتج',
-                                'success'
-                            );
-                            $('#photo').val('');
-                            $('#name').val('');
-                            $('#parcod').val('');
-                            $('#count').val('');
-                            $('#pruch_prices').val('');
-                            $('#prices').val('');
-                            $('.photo-error').html('');
-                            $('.name-error').html('');
-                            $('.parcod-error').html('');
-                            $('.count-error').html('');
-                            $('.pruch_prices-error').html('');
-                            $('.prices-error').html('');
-                            $('#back_button').empty();
-                            $('#modal_default').modal('hide');
-
-                        } else {
-                            $.each(data.data, function (key, value) {
-                                $('.' + key + '-error').html(value);
-                            });
-                        }
-
-                    },
-                    error: function (data) {
+        function  updatedDetailsview(id) {
+            $.ajax({
+                url: '{{url("dashboard/purchases/updated/detail")}}'+'/'+id,
+                method: 'get',
+                success: function (data) {
+                    if(data.status == undefined)
+                    {
+                        $('#modal_default').modal('show');
+                        $('.modael_here').html(data);
+                        $('.select-search').select2();
+                    }else{
+                        $('#modal_default').modal('hide');
                         alert('برجاء المحاوله مره اخري .. ');
-                        var block = $('.modael_here');
-                        $(block).unblock();
-
                     }
-                });
 
-
+                },
+                error: function (data) {
+                    alert('برجاء المحاوله مره اخري .. ');
+                }
             });
+        }
 
-        });
+
 
     </script>
 @endsection

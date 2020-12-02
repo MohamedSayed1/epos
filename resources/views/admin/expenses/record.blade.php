@@ -127,7 +127,7 @@
         <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
             <div class="d-flex">
                 <div class="breadcrumb">
-                    <a href="{{ url('/') }}" class="breadcrumb-item">
+                    <a href="{{ url('/dashboard') }}" class="breadcrumb-item">
                         <i class="icon-home2 mr-2"></i> الرئيسيه</a>
                     <a href="{{ url('/dashboard/expenses') }}" class="breadcrumb-item">
                          انواع المصروفات</a>

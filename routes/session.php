@@ -27,7 +27,7 @@ Route::get('card/del/{id?}', 'cartControllers@del');
 Route::post('card/updated', 'cartControllers@updated');
 Route::get('card/dump', 'cartControllers@Remove');
 Route::get('card/pay/view', 'cartControllers@payModal');
-Route::get('card/paid', 'cartControllers@paid');
+Route::get('card/paid/{dic?}', 'cartControllers@paid');
 Route::get('card/expenses/view', 'Sessions\TransactionControllers@index');
 Route::post('card/expenses/view', 'Sessions\TransactionControllers@expenses');
 

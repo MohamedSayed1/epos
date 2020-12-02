@@ -59,9 +59,9 @@ class cartControllers extends Controller
         return view('admin.session.paymodel');
     }
 
-    public function paid()
+    public function paid($dic)
     {
-        if($tran = Paid::paid())
+        if($tran = Paid::paid($dic))
         {
             $data = $tran;
             Cart::destroy();

@@ -2,7 +2,7 @@
     <h5 class="modal-title">دفع</h5>
     <button type="button" class="close" data-dismiss="modal">&times;</button>
 </div>
-<form >
+<form id="paid" >
     <div class="modal-body modael_here">
 
 
@@ -40,14 +40,21 @@
             </tr>
             <tr>
                 <th>الباقي : </th>
-                <td class="text-right" id="rest_total"></td>
+                <td class="text-right" id="rest_total">0</td>
             </tr>
             </tbody>
         </table>
 
         <div class="col-md-12">
             <label><span class="text-danger">*</span>المدفوع</label>
-            <input type="number" min="0" step='any' name="paid" onkeyup="rest(this,'{{Cart::total()}}')" id="paid" class="form-control" value=""
+            <input type="number" min="{{Cart::total()}}" step='any' name="paid" onkeyup="rest(this,'{{Cart::total()}}')" id="paid_total" class="form-control" value="{{Cart::total()}}"
+                   required>
+            <span class="help-block">
+                  <strong class="name-error text-danger"></strong>
+            </span>
+
+            <label><span class="text-danger"></span>الخصم</label>
+            <input type="number" min="0" step='any' name="discount" onkeyup="discount_res(this,'{{Cart::total()}}')" id="discount" class="form-control" value="0"
                    required>
             <span class="help-block">
                   <strong class="name-error text-danger"></strong>

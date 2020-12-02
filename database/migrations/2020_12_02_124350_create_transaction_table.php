@@ -20,6 +20,7 @@ class CreateTransactionTable extends Migration
             $table->float('total', 10, 0)->nullable();
             $table->tinyInteger('type')->nullable()->default(1);
             $table->float('disc', 10, 0)->default(0);
+            $table->float('real_total', 10, 0)->nullable();
             $table->enum('status', ['sale', 'return', 'expenses'])->nullable()->default('sale');
             $table->text('details')->nullable();
             $table->timestamps();

@@ -12,14 +12,15 @@ use Cart;
 
 trait Paid
 {
-    public static  function paid()
+    public static  function paid($dic)
     {
         $add = new Transaction();
         $add->session_id = Auth()->user()->open_seesion;
         $add->user_id = Auth()->user()->id;
-        $add->total = Cart::total();
+        $add->total = Cart::total() - $dic;
         $add->type = 1;
-        $add->disc = 0;
+        $add->disc = $dic;
+        $add->real_total = Cart::total();
         if($add->save()){
             foreach (Cart::content() as $row) {
                 $produc = Products::find($row->id);
@@ -91,6 +92,4 @@ trait Paid
          'id'=> $session_id,
          ] ;
     }
-
-    
 }
