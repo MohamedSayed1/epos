@@ -74,26 +74,27 @@ class PurchasesControllers extends Controller
         return redirect()->back();
     }
 
-    public function updatedDetails($id = 0)
+    public function show($id = 0)
     {
-        //
-        $detail = $this->details->getByID($id);
-        if(!empty($detail))
+
+         $purchas = $this->purch->getByID($id);
+        if(!empty($purchas))
         {
-            $products = $this->product->getAll();
-            return view('admin.purchases.updatedDetails')
-                ->with('products',$products)
-                ->with('detail',$detail);
+            $detalis = $this->details->get($id);
+            return view('admin.purchases.invoices')
+                ->with('purchas',$purchas)
+                ->with('detalis',$detalis);
         }
 
-        return response()->json(['status'=> 201]) ;
-
-
     }
 
-    public function updatedDetailsProcess(Request $request)
+    public function search(Request $request)
     {
 
+        $purchases = $this->purch->Search($request->all());
+        return view('admin.purchases.index')
+            ->with('purchases',$purchases);
     }
+
 
 }

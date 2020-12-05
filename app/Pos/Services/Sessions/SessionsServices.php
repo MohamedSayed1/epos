@@ -92,4 +92,9 @@ class SessionsServices extends Services
         $this->setError(['برجاء المحاوله مره اخري ']);
         return false;
     }
+
+    public function getToUser()
+    {
+        return $this->sessionRepo->openSessionForUser();
+    }
 }

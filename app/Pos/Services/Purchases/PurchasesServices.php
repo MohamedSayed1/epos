@@ -59,4 +59,9 @@ class PurchasesServices extends Services
        return $this->purchasRepo->getByid($id);
     }
 
+    public function Search($data)
+    {
+        return $this->purchasRepo->search($data);
+    }
+
 }

@@ -22,10 +22,18 @@ class SessionsControllers extends Controller
 
     public function index()
     {
-        $sessions = $this->sessionSer->getAll();
+        if(Auth()->user()->type == "admin")
+        {
+            $sessions = $this->sessionSer->getAll();
+            return view('admin.session.pos')
+                ->with('sessions',$sessions);
+        }else{
+            $sessions = $this->sessionSer->getToUser();
+            return view('admin.session.pos')
+                ->with('sessions',$sessions);
+        }
 
-        return view('admin.session.pos')
-            ->with('sessions',$sessions);
+
     }
 
 

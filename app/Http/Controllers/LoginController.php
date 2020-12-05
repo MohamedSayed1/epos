@@ -14,7 +14,10 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['username' =>$request->get('username'), 'password' =>$request->get('password')]))
         {
-            return redirect('/dashboard');
+            if(Auth()->user()->type == "admin")
+                return redirect('dashboard');
+            else
+                return redirect('dashboard/session');
         }
         else {
             $errors = ['برجاء التاكد من اسم المستخدم او كلمه السر'];

@@ -27,13 +27,11 @@
                                     src="{{asset('template/back/assets/global_assets/images/user-place.png')}}"
                                     width="38" height="38" class="rounded-circle" alt=" "></a>
                     </div>
-
                     <div class="media-body center">
                         <div class="media-title font-weight-semibold">{{Auth()->user()->name}}</div>
                         <div class="font-size-base opacity-50">
                             <div id="curTime"></div>
                         </div>
-
                     </div>
 
                     <div class="ml-3 align-self-center">
@@ -49,6 +47,7 @@
         <div class="card card-sidebar-mobile">
             <ul class="nav nav-sidebar" data-nav-type="accordion">
 
+                @if(Auth()->user()->type == "admin")
                 <!-- Main -->
                 <li class="nav-item">
                     <a href="{{url('/dashboard')}}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
@@ -140,7 +139,7 @@
                 </li>
 
                 <!--  Session      -->
-
+                @endif
                 <li class="nav-item-header">
                     <div class="text-uppercase font-size-xs line-height-xs">الجلسات</div>
                     <i class="icon-menu" title="Layout options"></i></li>
@@ -162,7 +161,7 @@
                 </li>
 
 
-
+                @if(Auth()->user()->type == "admin")
 
                 <!--  users    -->
 
@@ -183,7 +182,7 @@
                     </ul>
                 </li>
 
-
+                @endif
 
             </ul>
         </div>

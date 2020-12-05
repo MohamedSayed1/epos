@@ -86,7 +86,7 @@
         <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
             <div class="d-flex">
                 <div class="breadcrumb">
-                    <a href="{{ url('/dashboard') }}" class="breadcrumb-item">
+                    <a href="{{Auth()->user()->type =="admin"? url('/dashboard') :'#' }}" class="breadcrumb-item">
                         <i class="icon-home2 mr-2"></i> الرئيسيه</a>
                     <span class="breadcrumb-item active">الجلسات</span>
                 </div>
@@ -134,8 +134,8 @@
                                         <td>{{ $session->num_session }}</td>
                                         <td>{{ $session->created_at}}</td>
                                         <td>{{ $session->opening_balance }}</td>
-                                        <td>{{ $session->user_id_open }}</td>
-                                        <td>{{ $session->user_id_close }}</td>
+                                        <td>{{$session->getUserOpen !== null ? $session->getUserOpen->name :' ' }}</td>
+                                        <td>{{ $session->getUserClose !== null? $session->getUserClosename:' '}}</td>
                                         <td>{{ $session->close_balance }}</td>
                                         <td>{{ $session->close_at }}</td>
                                         <td>
@@ -146,6 +146,7 @@
                                                        aria-expanded="top"><i class="icon-menu9"></i></a>
                                                     <div class="dropdown-menu" x-placement="bottom-start"
                                                          style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 21px, 0px);">
+                                                        @if(Auth()->user()->type == "admin")
                                                             <a href="#"
                                                                class="dropdown-item  updated_expenses{{$session->session_id}}"
                                                                data-toggle="tooltip"
@@ -154,7 +155,7 @@
                                                                onclick="updated({{$session->session_id}},{{$session->opening_balance}})"
                                                             > <i class="icon-pencil7"></i> تعديل
                                                             </a>
-
+                                                        @endif
                                                             <a href="#"
                                                                class="dropdown-item"
                                                                data-toggle="tooltip"

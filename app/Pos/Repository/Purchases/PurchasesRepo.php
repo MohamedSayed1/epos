@@ -25,7 +25,7 @@ class PurchasesRepo
 
     public function getByid($id = 0)
     {
-        return $this->purchas->with('getDetilas')->find($id);
+        return $this->purchas->find($id);
     }
 
 
@@ -65,6 +65,20 @@ class PurchasesRepo
             return true;
         }
         return false;
+    }
+
+    public function search($data)
+    {
+        $name = $data['name'];
+        $dataFrom = $data['data_from'];
+        $dataTo = $data['date_at'];
+       return  $this->purchas->orderBy('updated_at', 'desc')
+            ->when($name , function ($q) use ($name) {
+                return   $q->where('supplier_name', 'like', '%' . $name . '%');
+
+            })->when($dataFrom , function ($q) use ($dataFrom,$dataTo) {
+               return $q->whereBetween('in_data', [$dataFrom, $dataTo]);
+            })->get();
     }
 
     private function getNumper()

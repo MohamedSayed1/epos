@@ -24,7 +24,7 @@ class PurchasesDetailsServices extends Services
 
     public function getByID($id)
     {
-        return $this->details->getByid($id);
+        return $this->details->get($id);
     }
 
 }

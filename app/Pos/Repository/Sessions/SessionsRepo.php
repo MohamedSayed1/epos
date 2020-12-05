@@ -22,8 +22,8 @@ class SessionsRepo
 
     public function gets()
     {
-        return $this->seesion->orderBy('updated_at', 'desc')
-            ->take(20)
+        return $this->seesion->with('getUserOpen','getUserClose')->orderBy('updated_at', 'desc')
+            ->take(50)
             ->get();
     }
 
@@ -96,6 +96,14 @@ class SessionsRepo
         $user = User::find($userId);
         $user->open_seesion = null;
         return  $user->save();
+    }
+
+    public function openSessionForUser()
+    {
+        return $this->seesion->with('getUserOpen','getUserClose')->where([
+            ['user_id_open',Auth()->user()->id],
+            ['type',1]
+            ])->get();
     }
 
 
