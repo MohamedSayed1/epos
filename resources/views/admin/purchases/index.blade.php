@@ -182,7 +182,7 @@
                 var dayLater = new Date(fromDay+oneDay);
                 dayLater.setHours(0,0,0,0);
 
-                var ninetyDaysLater = new Date(fromDay+(90*oneDay));
+                var ninetyDaysLater = new Date(fromDay+(720*oneDay));
                 ninetyDaysLater.setHours(23,59,59,999);
 
                 $('#date_at')

@@ -19,7 +19,10 @@ class SessionsRepo
         $this->seesion = new Sessions();
     }
 
-
+    public function getBySessionId($id)
+    {
+        return $this->seesion->find($id);
+    }
     public function gets()
     {
         return $this->seesion->with('getUserOpen','getUserClose')->orderBy('updated_at', 'desc')
@@ -105,6 +108,23 @@ class SessionsRepo
             ['type',1]
             ])->get();
     }
+
+    public function search($data)
+    {
+        $type = $data['status'] == 'open'?1:0;
+        $dataFrom = $data['data_from'];
+        $dataTo = $data['date_at'];
+
+        return $this->seesion->orderBy('updated_at', 'desc')
+            ->when($type , function ($q) use ($type) {
+                return   $q->where('type',$type);
+            })->when($dataFrom , function ($q) use ($dataFrom,$dataTo) {
+                return $q->whereBetween('created_at', [$dataFrom, $dataTo]);
+            })->get();
+
+    }
+
+
 
 
 

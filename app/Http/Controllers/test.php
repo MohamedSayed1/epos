@@ -18,14 +18,10 @@ class test extends Controller
 
     public function index()
     {
-        $x = new PurchasesRepo();
-        $data = [
-            "name"=>'محمد',
-            "data_from"=> "2020-11-01",
-             "date_at"=> "2020-12-30"
-        ];
+        $x = new TransactionRepo();
 
-        return $x->search($data) ;
+
+        return $x->getBySessionId(9) ;
 
 
     }

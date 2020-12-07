@@ -129,7 +129,7 @@
     <div id="receipt-data">
         <div class="centered">
             <!--img src="" height="42" width="42" style="margin:10px 0;filter: brightness(0);"-->
-            <h2>اسم الشركه</h2>
+            <h2>مكتبه الصحابه</h2>
             <p>رقم الفاتوره
                 <br>{{$getTotal->transaction_id}}
             </p>

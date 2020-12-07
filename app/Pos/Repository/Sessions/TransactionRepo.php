@@ -21,6 +21,12 @@ class TransactionRepo
         return $this->tranModel->find($id);
     }
 
+    public function getBySessionId($id)
+    {
+        return $this->tranModel->with('get')
+            ->where('session_id',$id)->get();
+    }
+
     public function expenses($data)
     {
         $this->tranModel->session_id = Auth()->user()->open_seesion;
@@ -30,5 +36,14 @@ class TransactionRepo
         $this->tranModel->status     = "expenses";
         $this->tranModel->details    = $data['details'];
        return $this->tranModel->save();
+    }
+
+    public function getByType($id,$status)
+    {
+        return $this->tranModel->with('get')->
+        where([
+            ['session_id',$id],
+            ['status',$status],
+            ])->get();
     }
 }

@@ -44,4 +44,9 @@ class TransactionServices extends Services
         $this->setError(['برجاء المحاوله مره اخري ']);
         return false;
     }
+
+    public function getByStatus($id,$status)
+    {
+        return $this->transRepo->getByType($id,$status);
+    }
 }

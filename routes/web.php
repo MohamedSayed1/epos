@@ -21,12 +21,7 @@ Route::get('/', function () {
 
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
-Route::get('/dashboard', function () {
-            if(Auth()->user()->type == "admin")
-                 return view('admin.layout.admin');
-            else
-                return redirect('dashboard/session');
-})->middleware('CheckAuth');
+Route::get('/dashboard','HomeControllers@index')->middleware('CheckAuth');
 
 Route::group(['middleware' => ['CheckAuth','CheckAdmin']], function () {
 
@@ -52,4 +47,12 @@ Route::group(['middleware' => ['CheckAuth','CheckAdmin']], function () {
             Route::post('/password', 'UsersControllers@updatedPassword');
         });
     });
+
+    // reports
+
+    Route::post('dashboard/reports/expenses', 'ReportsController@expensesReport');
+    Route::get('dashboard/reports/expenses', 'HomeControllers@index');
+
+
+
 });

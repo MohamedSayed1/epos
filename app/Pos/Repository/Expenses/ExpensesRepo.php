@@ -52,4 +52,19 @@ class ExpensesRepo
         return $this->expRepo->with('getSlit')->find($id);
     }
 
+    public function search($data)
+    {
+        $exp = $data['exp'];
+        $dataFrom = $data['data_from'];
+        $dataTo = $data['date_at'];
+
+        return $this->expRepo->orderBy('updated_at', 'desc')
+            ->when($exp , function ($q) use ($exp) {
+                return   $q->where('split_id',$exp);
+            })->when($dataFrom , function ($q) use ($dataFrom,$dataTo) {
+                return $q->whereBetween('created_at', [$dataFrom, $dataTo]);
+            })->get();
+
+    }
+
 }

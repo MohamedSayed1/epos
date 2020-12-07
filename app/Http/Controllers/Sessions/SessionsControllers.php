@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Sessions;
 
 use App\Http\Controllers\Controller;
 use App\Pos\Services\Sessions\SessionsServices;
+use App\Pos\Services\Sessions\TransactionServices;
 use Helmesvs\Notify\Facades\Notify;
 use Illuminate\Http\Request;
 use Cart;
@@ -14,10 +15,12 @@ use App\Pos\Paid;
 class SessionsControllers extends Controller
 {
     private $sessionSer ;
+    private $transactionSer;
 
     public function __construct()
     {
         $this->sessionSer = new SessionsServices();
+        $this->transactionSer = new TransactionServices();
     }
 
     public function index()
@@ -62,6 +65,38 @@ class SessionsControllers extends Controller
 
         $errors =  $this->sessionSer->errors();
         return response()->json(['status'=> 201,'data'=> $errors ]) ;
+    }
+
+    public function viewDetails($id = 0)
+    {
+
+        $session = $this->sessionSer->getBysessionId($id);
+        if(!empty($session))
+        {
+            $pref = Paid::Details($id);
+            return view('admin.session.viewDetails')
+                ->with('pref',$pref)
+                ->with('session',$session);
+        }
+        return response()->json(['status'=> 201]) ;
+
+    }
+
+    public function getDetialsRepo($id,$type)
+    {
+        $detials = $this->transactionSer->getByStatus($id,$type);
+
+        return view('admin.session.detialsReport')
+            ->with('detials',$detials)
+            ->with('type',$type);
+    }
+
+    public function search(Request $request)
+    {
+
+        $sessions = $this->sessionSer->search($request->all());
+        return view('admin.session.pos')
+            ->with('sessions',$sessions);
     }
 
 

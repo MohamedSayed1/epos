@@ -99,4 +99,9 @@ class ExpensesServices extends Services
         $this->setError(['لم نجد العنصر المراد حذف برجاء المحاوله مره اخري ..!']);
         return false;
     }
+
+    public function serch($data)
+    {
+        return $this->exRepo->search($data);
+    }
 }

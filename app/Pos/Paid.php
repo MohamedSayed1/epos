@@ -92,4 +92,23 @@ trait Paid
          'id'=> $session_id,
          ] ;
     }
+
+    public static function Details($session_id)
+    {
+        $tran      = Transaction::where('session_id',$session_id)->get();
+        $sales     = $tran->where('status','=',"sale")->sum('total');
+        $expenses  = $tran->where('status','=',"expenses")->sum('total');
+        $return    = $tran->where('status','=',"return")->sum('total');
+        $expTotal   = $expenses + $return;
+        $total     = $tran->sum('total');
+
+        return [
+            'total'=>$total,
+            'sales'=>$sales,
+            'expenses'=>$expenses,
+            'return'=>$return,
+            'actual'=> ($sales - $expTotal),
+
+        ] ;
+    }
 }

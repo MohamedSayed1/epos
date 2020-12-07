@@ -6,8 +6,11 @@ Route::group(['middleware' => ['CheckAuth']], function () {
 
             Route::get('/', 'SessionsControllers@index');
             Route::post('/', 'SessionsControllers@open');
-
+            Route::get('/search', 'SessionsControllers@index');
+            Route::post('/search', 'SessionsControllers@search');
             Route::post('/updated', 'SessionsControllers@updated');
+            Route::get('/view/details/{id?}', 'SessionsControllers@viewDetails');
+            Route::get('/details/more/{id?}/{type?}', 'SessionsControllers@getDetialsRepo');
 
 
             Route::get('/point', 'PointOfSalleControllers@Point');

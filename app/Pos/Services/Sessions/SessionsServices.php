@@ -19,6 +19,10 @@ class SessionsServices extends Services
         $this->sessionRepo = new SessionsRepo();
     }
 
+    public function getBysessionId($id)
+    {
+        return $this->sessionRepo->getBySessionId($id);
+    }
     public function getAll()
     {
         return $this->sessionRepo->gets();
@@ -91,6 +95,11 @@ class SessionsServices extends Services
 
         $this->setError(['برجاء المحاوله مره اخري ']);
         return false;
+    }
+
+    public function search($data)
+    {
+        return $this->sessionRepo->search($data);
     }
 
     public function getToUser()
