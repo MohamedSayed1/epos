@@ -51,7 +51,16 @@ Route::group(['middleware' => ['CheckAuth','CheckAdmin']], function () {
     // reports
 
     Route::post('dashboard/reports/expenses', 'ReportsController@expensesReport');
-    Route::get('dashboard/reports/expenses', 'HomeControllers@index');
+    Route::get('dashboard/reports/expenses', 'ReportsController@expenses');
+
+    Route::post('dashboard/reports/products', 'ReportsController@ProductReport');
+    Route::get('dashboard/reports/export/excel/products', 'ReportsController@exportProudcts');
+
+    Route::get('dashboard/reports/products', function () {
+        return redirect('dashboard');
+    });
+
+
 
 
 

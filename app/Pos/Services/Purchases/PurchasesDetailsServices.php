@@ -27,4 +27,9 @@ class PurchasesDetailsServices extends Services
         return $this->details->get($id);
     }
 
+    public function Search($data)
+    {
+      return $this->details->Search($data);
+    }
+
 }

@@ -75,9 +75,8 @@
 
         </ul>
 
-        <span class="badge bg-pink-400 badge-pill ml-md-3 mr-md-auto">16 orders</span>
 
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
 
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
@@ -118,14 +117,18 @@
 
             <div class="navbar-collapse collapse" id="navbar-footer">
 					<span class="navbar-text">
-						&copy; 2020 <a href="#">Pos v 1.00</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+						 <a href="#">ePos v 1.00</a> &copy; 2020
 					</span>
+
+                <!--span class="navbar-text">
+						&copy; 2020 <a href="#">Pos v 1.00</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+				</span>
 
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item"><a href="https://kopyov.ticksy.com/" class="navbar-nav-link" target="_blank"><i class="icon-lifebuoy mr-2"></i> Support</a></li>
                     <li class="nav-item"><a href="http://demo.interface.club/limitless/docs/" class="navbar-nav-link" target="_blank"><i class="icon-file-text2 mr-2"></i> Docs</a></li>
                     <li class="nav-item"><a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328?ref=kopyov" class="navbar-nav-link font-weight-semibold"><span class="text-pink-400"><i class="icon-cart2 mr-2"></i> Purchase</span></a></li>
-                </ul>
+                </ul-->
             </div>
         </div>
         <!-- /footer -->
@@ -154,10 +157,10 @@
 <!-- /theme JS files -->
 <script src="{{ asset('template/back/assets/global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('template/back/assets/global_assets/js/plugins/tables/datatables/extensions/natural_sort.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/locales/ar.min.js"></script>
+<!--script-- src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.8/js/locales/ar.min.js"></script-->
 <script src="{{ asset('template/back/assets/global_assets/js/plugins/notifications/bootbox.min.js')}}"></script>
 <script src="{{ asset('template/back/assets/global_assets/js/plugins/forms/selects/select2.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha512-YUkaLm+KJ5lQXDBdqBqk7EVhJAdxRnVdT2vtCzwPHSweCzyMgYV/tgGF4/dCyqtCC2eCphz0lRQgatGVdfR0ww==" crossorigin="anonymous"></script>
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha512-YUkaLm+KJ5lQXDBdqBqk7EVhJAdxRnVdT2vtCzwPHSweCzyMgYV/tgGF4/dCyqtCC2eCphz0lRQgatGVdfR0ww==" crossorigin="anonymous"></--script-->
 
 <script>
     $('.tasks-list').DataTable({

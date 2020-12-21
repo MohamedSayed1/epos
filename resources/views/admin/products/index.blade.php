@@ -192,6 +192,16 @@
                 <h4><i class="icon-arrow-left52 mr-2"></i>
                     <span class="font-weight-semibold">المنتجات</span></h4>
             </div>
+            <div class="header-elements d-none text-center text-md-left mb-3 mb-md-0">
+                <div class="btn-group">
+                    <button type="button" class="btn bg-indigo-400"><i class="icon-stack2 mr-2"></i> تحميل</button>
+                    <button type="button" class="btn bg-indigo-400 dropdown-toggle" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">تقرير</div>
+                        <a href="{{url('dashboard/reports/export/excel/products')}}" class="dropdown-item"><i class="icon-file-pdf"></i>المخزون الحالي</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
             <div class="d-flex">

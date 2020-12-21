@@ -13,6 +13,7 @@
         "helmesvs/laravel-notify": "^1.1",
         "laravel/framework": "^6.18.35",
         "laravel/tinker": "^2.0",
+        "maatwebsite/excel": "^3.1",
         "olimortimer/laravelshoppingcart": "^4.0"
     },
     "require-dev": {

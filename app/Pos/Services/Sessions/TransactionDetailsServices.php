@@ -21,4 +21,9 @@ class TransactionDetailsServices extends Services
     {
         return $this->transactionDetailRepo->getByTransactionId($id);
     }
+
+    public function getByproductAndStatus($data)
+    {
+        return $this->transactionDetailRepo->getBYProduct($data);
+    }
 }

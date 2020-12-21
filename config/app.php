@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Helmesvs\Notify\NotifyServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
 
         /*
@@ -231,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Notify' => Helmesvs\Notify\Facades\Notify::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

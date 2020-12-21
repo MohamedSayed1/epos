@@ -15,5 +15,9 @@ class PurchasesDetails extends Model
     {
         return $this->belongsTo('App\Pos\Model\Products\Products','prod_id','product_id');
     }
+    public function purchases()
+    {
+        return $this->belongsTo('App\Pos\Model\Purchases\Purchases','pursh_id','purchases_id');
+    }
 
 }

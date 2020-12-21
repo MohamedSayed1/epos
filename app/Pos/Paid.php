@@ -63,6 +63,7 @@ trait Paid
             $ditals->quantity       = $data['count'][$i];
             $ditals->pruch_prices   = $product->pruch_prices;
             $ditals->paid           = $product->prices;
+            $ditals->status         = 'return';
             $ditals->save();
             $product->count = $product->count + $data['count'][$i] ;
             $product->save();

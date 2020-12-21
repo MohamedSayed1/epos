@@ -22,4 +22,16 @@ class PurchaseDetialsRepo
         return $this->detils->with('Product')->where('pursh_id',$id)->get();
     }
 
+    public function Search($data)
+    {
+        $id = $data['product_id'];
+        $dataFrom = $data['data_from'];
+        $dataTo = $data['date_at'];
+
+        return $this->detils->with('Product','purchases')->where('prod_id',$id)
+            ->when($dataFrom , function ($q) use ($dataFrom,$dataTo) {
+                return $q->whereBetween('created_at', [$dataFrom, $dataTo]);
+            })->orderBy('updated_at', 'DESC')->get();
+    }
+
 }
