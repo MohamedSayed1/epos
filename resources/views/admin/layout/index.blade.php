@@ -87,7 +87,7 @@
                         <form action="{{url('dashboard/reports/products')}}" method="post">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label class="ladda-label">نوع المصروف </label>
+                                    <label class="ladda-label">المنتجات </label>
                                     <select name="product_id" class="form-control select-search">
                                         @foreach($prodcuts as $prod)
                                             <option value="{{$prod->product_id}}">{{$prod->name}}</option>

@@ -69,4 +69,16 @@ class ProductsRepo
     {
         return $this->product->where('name','like','%'.$serach.'%')->orwhere('parcod',$serach)->paginate(12);
     }
+    public function search($data)
+    {
+        $name = $data['name'];
+        $parcode = $data['parcode'];
+
+        return  $this->product->orderBy('updated_at', 'desc')
+            ->when($name , function ($q) use ($name) {
+                return   $q->where('name', 'like', '%' . $name . '%');
+            })->when($parcode , function ($q) use ($parcode) {
+                return $q->where('parcod','like','%'.$parcode.'%');
+            })->get();
+    }
 }

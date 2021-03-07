@@ -58,4 +58,13 @@ Class ProductsController extends Controller
         return response()->json(['status'=> 201,'data'=> $errors ]) ;
     }
 
+    public function search(Request $request)
+    {
+
+        $products = $this->ProdcutServ->search($request->all());
+
+        return view('admin.products.index')
+            ->with('products',$products);
+    }
+
 }

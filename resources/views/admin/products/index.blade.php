@@ -61,14 +61,13 @@
                             <input type="file" name="photo" id="photo" class="form-input-styled" data-fouc>
                             <span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
                             <span class="help-block">
-                                     <strong class="photo-error text-danger"></strong>
-                                </span>
-
+                               <strong class="photo-error text-danger"></strong>
+                            </span>
                         </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                     </div>
 
-                    <div class="modal-footer ">
+                    <div class="modal-footer">
 
                         <button type="button" id="addSubmit"
                                 class="btn btn-primary btn-labeled btn-labeled-left btn-sm"><b><i
@@ -198,7 +197,8 @@
                     <button type="button" class="btn bg-indigo-400 dropdown-toggle" data-toggle="dropdown"></button>
                     <div class="dropdown-menu">
                         <div class="dropdown-header">تقرير</div>
-                        <a href="{{url('dashboard/reports/export/excel/products')}}" class="dropdown-item"><i class="icon-file-pdf"></i>المخزون الحالي</a>
+                        <a href="{{url('dashboard/reports/export/excel/products')}}" class="dropdown-item"><i
+                                    class="icon-file-pdf"></i>المخزون الحالي</a>
                     </div>
                 </div>
             </div>
@@ -218,6 +218,40 @@
     <div class="content">
 
         <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header header-elements-inline">
+                        <h6 class="card-title">
+                            بحث
+                            <span class="d-block font-size-base">هنا تسطيع البحث عن المنتجات عن طريق الاسم او الباركود</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{url('dashboard/products/search')}}" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label><span class="text-danger"></span>الاسم</label>
+
+                                    <input type="text" name="name"  placeholder="ادخل اسم المنتج"  class="form-control" value="{{app('request')->input('name')}}">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label><span class="text-danger"></span>الباركود</label>
+                                    <input type="text" name="parcode" placeholder="ادخل الباركود"  class="form-control" value="{{app('request')->input('parcode')}}">
+                                </div>
+                            </div>
+                            <br>
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success btn-labeled btn-labeled-left btn-lg"><b><i
+                                                class="icon-search4"></i></b> بحث
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header header-elements-inline">
@@ -590,11 +624,11 @@
                         $(block).unblock();
                         document.getElementById("updatedSubmit").disabled = false;
                         if (data.status == 200) {
-                                Swal.fire(
-                                    'احسنت',
-                                    'تم التعديل بنجاح',
-                                    'success'
-                                );
+                            Swal.fire(
+                                'احسنت',
+                                'تم التعديل بنجاح',
+                                'success'
+                            );
                             location.reload();
                         } else {
                             $.each(data.data, function (key, value) {

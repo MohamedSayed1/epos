@@ -117,4 +117,9 @@ class ProductServices extends Services
     {
         return $this->productRepo->getPage($serach);
     }
+
+    public function search($data)
+    {
+        return $this->productRepo->search($data);
+    }
 }
