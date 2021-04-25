@@ -20,6 +20,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->integer('quantity')->nullable();
             $table->float('pruch_prices', 10, 0)->nullable();
             $table->float('paid', 10, 0)->nullable();
+            $table->enum('status', ['sale', 'return'])->default('sale');
             $table->timestamps();
         });
     }

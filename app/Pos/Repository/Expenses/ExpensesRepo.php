@@ -19,7 +19,7 @@ class ExpensesRepo
     {
         $this->expRepo->split_id = $data['split_id'];
         $this->expRepo->desc     = $data['desc'];
-        $this->expRepo->prices     = $data['paid'];
+        $this->expRepo->prices   = $data['paid'];
 
         return $this->expRepo->save();
     }

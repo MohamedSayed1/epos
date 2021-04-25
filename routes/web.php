@@ -65,3 +65,5 @@ Route::group(['middleware' => ['CheckAuth','CheckAdmin']], function () {
 
 
 });
+
+Route::get('/test/ver', 'testinter@add');

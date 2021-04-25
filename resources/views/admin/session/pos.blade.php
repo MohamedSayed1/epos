@@ -361,14 +361,14 @@
                 url: '{{url("dashboard/session/details/more")}}' + '/' + id+'/'+type,
                 method: 'get',
                 success: function (data) {
-                    alert('yes');
+
                     $('#modal_details_modal').html(data);
                 },
                 error: function (data) {
                     alert('برجاء المحاوله مره اخري .. ');
                 }
             });
-            $('#details_modal').modal({backdrop: 'static', keyboard: false})
+            $('#details_modal').modal({backdrop: 'static', keyboard: false});
             $('#details_modal').modal('show');
 
         }
